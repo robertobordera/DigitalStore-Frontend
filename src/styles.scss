@@ -1,0 +1,15 @@
+$morado-oscuro:rgb(60, 31, 31);
+$morado-claro:rgb(110, 1, 149);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background: linear-gradient(to bottom right, $morado-oscuro, $morado-claro);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+

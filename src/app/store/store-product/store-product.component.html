@@ -1,0 +1,56 @@
+<main>
+   
+    <h1 class="tituloElement">{{$valorURL}}</h1>
+    <div class="flex-Articulos">   
+        @for(producto of productos;track producto.id){
+        <article class="articulos">
+                <section>
+                    <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                    <br><br><br>
+                    <div>
+                    <p class="precio">{{producto.precio}}€</p><br><br>
+                     <a href="carrito.html"><p class="animacion">Añadir al carrito</p></a>
+                    <p class="item item-1">{{producto.marcaModelo}}</p><br>
+                    </div>
+                </section>   
+            </article>
+        }@empty {
+            <p>No hay elementos para mostrar</p>
+        }
+    </div>
+
+    @if(id){
+        <hr>
+        <div class="divInteres">
+            <h2 class="interes">Tambien podria interesarte</h2>
+            <div class="flex-Articulos">   
+                
+                @for(producto of productos;track producto.id){
+                    <article class="articulos">
+                            <section>
+                                <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                                <br><br><br>
+                                <div>
+                                <p class="precio">{{producto.precio}}€</p><br><br>
+                                 <a href="carrito.html"><p class="animacion">Añadir al carrito</p></a>
+                                <p class="item item-1">{{producto.marcaModelo}}</p><br>
+                                </div>
+                            </section>   
+                        </article>
+                    }@empty {
+                        <p>No hay elementos para mostrar</p>
+                    }
+            </div>
+        </div>
+    }
+    @else {
+        <div class="video">
+        <video src="../../../assets/videos/home.mp4" width="1300" height="1000" autoplay muted ></video>
+      </div>
+      <div class="fecha">
+          <p>Última actualizacion <u><time datetime="2024-12-25">25 de Diciembre</time></u></p>
+      </div>
+    }
+    
+</main>
+

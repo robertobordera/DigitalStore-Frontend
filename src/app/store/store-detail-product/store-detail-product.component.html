@@ -1,0 +1,89 @@
+<main>
+    <article class="detalleImagenCaracteristicas">
+        <section class="imagenDetalle">
+            <div class="imagenTop">
+                <img class="imagen1" src="../../../assets/logos/monitor.jpg" alt="imagen-detalle">
+                <!-- <img class="imagen2" src="./imagenes/portatiles/AcerAspire.jpg" alt="imagen-detalle">
+                <img class="imagen3" src="./imagenes/portatiles/AcerNitro.jpg" alt="imagen-detalle"> -->
+            </div>
+            <br><br>
+            <div class="numerosImagenes">
+                <p class="uno">1</p>
+                <p class="dos">2</p>
+                <p class="tres">3</p>
+            </div>
+        </section>
+        <section class="textoDetalle">
+            <h2>{{producto.marcaModelo}}</h2>
+            <p class="precio">{{producto.precio}}€</p>
+            <p class="descripcion">{{producto.descripcion}}</p>
+            <small>Nº 9898</small>
+            <div class="button">
+                <a href="carrito.html"><button>Añadir al carrito</button></a>
+            </div>
+        </section>
+    </article>
+    <hr>
+    <div class="divInteres">
+        <br><br><br><br>
+        <h2 class="interes">Tambien podria interesarte</h2>
+        <br>
+        <div class="flex-Articulos">   
+            
+            @for(producto of productos;track producto.id){
+                @if(producto.id != 3){
+                    <article class="articulos">
+                        <section>
+                            <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                            <br><br><br>
+                            <div>
+                            <p class="precio">{{producto.precio}}€</p><br><br>
+                             <a href="carrito.html"><p class="animacion">Añadir al carrito</p></a>
+                            <p class="item item-1">{{producto.marcaModelo}}</p><br>
+                            </div>
+                        </section>   
+                    </article>
+                }
+            }@empty 
+            {
+                <p>No hay elementos para mostrar</p>
+            }
+                
+        </div>
+        <br><br><br><br><br>
+    </div>
+   
+    <article>
+        <section class="caracteristicas">
+            <h3>Caracteristicas</h3>
+            <ul>
+                <li>{{producto.caracteristicas}}</li>
+                <!-- <li>Velocidad hacia la victoria: Juega a velocidad profesional con un panel de nivel IPS rápido de hasta 144 Hz. Con Adaptive-Sync, la frecuencia de actualización de la pantalla se sincroniza con la frecuencia de fotogramas de la GPU para reducir el retraso, minimizar el tartamudeo y eliminar el desgarro visual para un juego ultra suave e inmersivo. Ultrarrápido Thunderbolt™ 4 te permite conectarte cómodamente sobre la marcha, como potentes GPU externas o monitores externos que aumentan tu potencia multitarea. Reproduzca películas, videos y juegos 4K Ultra HD en televisores de pantalla grande con HDMI 2.0b.</li>
+                <li>Audio claro: Dos altavoces con cuatro recortes son fuertes y potentes, lo que permite una inmersión de audio más profunda. DTS: X™ Ultra ofrece audio de alta fidelidad para un sonido claro y preciso. El sonido envolvente virtual de 7.1 canales mejora la conciencia espacial en el juego para ayudarte a derrotar a los enemigos. Hasta 8 modos preestablecidos para música, películas y géneros de juegos optimizan aún más tu experiencia, además del ecualizador incorporado que te permite ajustar tu configuración a voluntad.</li>
+                <li>Frescor duradero: El enfriamiento integral mantiene la confiabilidad del sistema a largo plazo y extiende la vida útil de tu máquina. Cuatro heatpipes y tres disipadores de calor extraen el calor de tu hardware y lo disipan rápidamente, manteniendo las temperaturas de los componentes en niveles óptimos. Un diseño de enfriamiento autolimpiante asegura que tu sistema de enfriamiento se mantenga libre de suciedad para una funcionalidad completa a largo plazo. Los modos de funcionamiento ajustados equilibran la velocidad del reloj y la acústica para la tarea en cuestión, personalizable según tus necesidades.</li> -->
+            </ul>
+        </section>
+    </article>
+    <hr>
+    <article class="divInteres">
+        <h2 class="interes">Valoraciones</h2>
+        <br><br><br>
+        @for(valoracion of valoraciones;track valoracion.id){
+            <section class="valoraciones">
+                <div class="imagenPuntuacion">
+                    <img src="../../../assets/logos/monitor.jpg" alt="avatar">
+                    <p>{{valoracion.puntuacion}}</p>
+                    <p>{{valoracion.fecha}}</p>
+                </div>
+                <div class="usuarioComentario">
+                    <p><strong>{{valoracion.nombre}}</strong></p>
+                    <br>
+                    <p>{{valoracion.comentario}}</p>
+                </div>
+            </section>
+            <br>
+        }
+    </article>
+
+    
+</main>

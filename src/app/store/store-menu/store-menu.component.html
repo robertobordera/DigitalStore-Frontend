@@ -1,0 +1,48 @@
+<header> 
+    <div class="flex-container">
+        <div class="caja">
+            <img src="../../../assets/logos/logo2.jpg" class="logo" alt="logo" width="160px" height="130px" 
+            (click)="indice()">
+            <h1 class="titulo"><span style="color: rgb(60, 31, 31);">Digital</span><span style="color: rgb(110, 1, 149);">
+                Store</span></h1>
+        </div>  
+
+        <div class="caja">
+            <input type="search" placeholder="Introduzca el producto que dea buscar">
+            <img src="../../../assets/logos/cdd1cdf2-ae1e-4d6e-a134-3d73bd342b63.png" class="lupa" alt="lupa" width="30px" height="30px">
+        </div>
+        
+        <div class="caja">
+            <img src="../../../assets/logos/login.png" class="" alt="usuario" width="30px" height="30px">
+            <p class="usuario">Mi cuenta</p>
+            <img src="../../../assets/logos/carrito.svg" alt="usuario" width="30px" height="30px">
+            <p class="usuario">Mi Cesta</p>
+        </div>
+    </div>
+    <hr>
+    <nav class="flex-container2">
+        <ul>
+            <li>
+                <a href=""><img src="../../../assets/logos/barra-nav.jpg" alt="desplegable" width="35px"></a>
+                <ul class="sub-menu">
+                    <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 1}">Moviles</a></li>
+                    <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 2}">Portatiles</a></li>
+                    <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 3}">Televisores</a></li>
+                    <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 4}">Tablets</a></li>
+                    <li class="componentes">
+                        <a href="/carrito.html">Componentes</a>
+                        <ul class="sub-menu-componentes">
+                            <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 5}">CPU</a></li>
+                            <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 6}">Tarjetas Graficas</a></li>
+                            <li><a  [routerLink]="['/store']" [queryParams]="{ categoria: 7}">Placas Base</a></li>
+                        </ul>
+                    </li>
+                    <!-- Agrega más elementos de lista aquí según sea necesario -->
+                </ul>
+            </li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li> <a href="carrito.html">Hacer un pedido</a></li>
+        </ul>
+    </nav>
+    
+</header>

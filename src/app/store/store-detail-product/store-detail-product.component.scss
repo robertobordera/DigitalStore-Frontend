@@ -1,0 +1,303 @@
+$morado-oscuro: rgb(60, 31, 31);
+$morado-claro: rgb(110, 1, 149);
+$blanco: white;
+$rojo: red;
+$verde: green;
+
+%mi-flexContainer-Articulos {
+    display: flex;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+@mixin articulos-transition($propiedades) {
+    -webkit-transform: $propiedades;
+    transform: $propiedades;
+}
+
+main {
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    .detalleImagenCaracteristicas {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 100px;
+
+        .imagenDetalle {
+            img {
+                width: 800px;
+                height: 550px
+            }
+
+            .imagenTop {
+
+                .imagen2,
+                .imagen3 {
+                    display: none;
+                }
+            }
+
+            grid-column: 1;
+            grid-row: 1;
+            padding: 30px;
+
+            .numerosImagenes {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 25px;
+
+                .dos {
+                    &:hover {
+                        .imagen2 {
+                            display: block;
+                        }
+
+                        .imagen1 {
+                            display: none;
+                        }
+
+                        .imagen3 {
+                            display: none;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .textoDetalle {
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding-top: 30px;
+            padding-right: 50px;
+
+            >h2 {
+                font-size: 2.7rem;
+            }
+
+            .precio {
+                color: darken($rojo, 0%);
+                font-size: 2rem;
+            }
+
+            .descripcion {
+                font-size: 1.5rem;
+            }
+
+            .button {
+                text-align: center;
+
+                a button {
+                    width: 300px;
+                    height: 60px;
+                    border-radius: 5px;
+                    background: linear-gradient(to bottom right, $morado-oscuro, $morado-claro);
+                    color: white;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+
+    .flex-Articulos {
+        @extend %mi-flexContainer-Articulos;
+
+        .articulos {
+            width: 400px;
+            height: auto;
+            background-color: $blanco;
+            margin: 10px;
+            border: black 2px solid;
+            padding: 30px;
+
+            &:hover {
+                box-shadow: 9px 7px 10px black;
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+                transition: all 0.5s ease-in-out;
+            }
+
+            .animacion {
+                text-align: center;
+                background: linear-gradient(to bottom right, $morado-claro, $morado-oscuro);
+                color: $blanco;
+                height: auto;
+                position: absolute;
+                width: 25.10rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: -29px;
+                padding: 28px;
+                font-size: 2rem;
+                text-transform: capitalize;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.5s ease-in-out;
+                cursor: pointer;
+                ;
+            }
+
+            &:hover .animacion {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+        section {
+            .precio {
+                text-align: center;
+                font-weight: bold;
+                font-size: 2rem;
+                color: $rojo;
+            }
+
+            p {
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-align: center;
+            }
+
+
+            img {
+                padding-left: 40px;
+                width: 80%;
+                height: 260px;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    .divInteres {
+        background: linear-gradient(to bottom right, $morado-claro, $morado-oscuro );
+    }
+    
+    .interes {
+        text-align: center;
+        text-transform: capitalize;
+        color: white;
+        font-size: 2.2rem;
+       
+    }
+    
+    .caracteristicas {
+        padding: 50px;
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        ul {
+            padding-top: 20px;
+            font-size: 1.4rem;
+
+            li {
+                padding-top: 30px;
+            }
+        }
+    }
+
+    article {
+        padding: 50px;
+
+        .tituloValoraciones {
+            font-size: 1.8rem;
+            padding-left: 50px;
+        }
+
+        .valoraciones {
+            display: flex;
+            flex-flow: row wrap;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: white;
+
+            .imagenPuntuacion {
+                padding: 20PX;
+
+                img {
+                    width: 150px;
+                    height: 150px;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    text-align: center;
+                    color: green;
+                }
+            }
+
+            .usuarioComentario {
+                p {
+                    padding-top: 25px;
+
+                    strong {
+                        font-size: 2rem;
+                    }
+
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1740px) {
+    main {
+        .detalleImagenCaracteristicas {
+            grid-template-columns: 1fr;
+
+            .imagenDetalle {
+                .imagenTop {
+                    text-align: center;
+                }
+
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .textoDetalle {
+                grid-column: 1;
+                grid-row: 2;
+                text-align: center;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1250px) {
+    main {
+        .flex-Articulos {
+            display: none;
+        }
+    }
+
+}
+
+@media (max-width: 905px) {
+    main {
+        .detalleImagenCaracteristicas {
+            .imagenDetalle {
+                img {
+                    width: 400px;
+                    height: 300px
+                }
+            }
+        }
+    }
+}

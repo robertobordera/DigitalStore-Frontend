@@ -1,0 +1,31 @@
+$morado-claro: rgb(110, 1, 149);
+$blanco: white;
+
+%mi-flexContainer-footer{
+    background-color: $blanco;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-around;
+    height: 4rem;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-family: monospace;
+   
+}
+
+.flex-footer{
+
+    @extend %mi-flexContainer-footer;
+    .pie{
+        font-size: large;
+        > a{
+            text-decoration: none;
+            color: black;
+
+            &:hover{
+                color:$morado-claro
+            }
+        }
+    }
+}
