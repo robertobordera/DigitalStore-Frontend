@@ -46,7 +46,10 @@
                 }
             }@empty 
             {
-                <p>No hay elementos para mostrar</p>
+            <div class="loader-container">
+                <div class="loader"></div>
+                <div class="loader-text">Loading...</div>
+            </div>
             }
                 
         </div>
@@ -82,6 +85,12 @@
                 </div>
             </section>
             <br>
+        }@empty 
+        {
+        <div class="loader-container">
+            <div class="loader"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
         }
     </article>
 

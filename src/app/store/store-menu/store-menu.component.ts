@@ -14,4 +14,8 @@ export class StoreMenuComponent {
   indice(){
     this.#router.navigate(['/store'])
   }
+
+  login(){
+    this.#router.navigate(['/auth/login']);
+  }
 }
