@@ -1,23 +1,171 @@
-
 <div class="container">
-    <div class="heading">Registro</div>
-    <form action="" class="form">
-        <input required="" class="input" type="email" name="email" id="email" placeholder="Correo Electronico">
-        <input required="" class="input" type="text" name="usuario" id="usuario" placeholder="Usuario">
-        <input required="" class="input" type="password" name="contraseña1" id="contraseña1" placeholder="Password">
-        <input required="" class="input" type="password" name="contraseña2" id="contraseña2" placeholder="Repita el password">
-        <div class="direccion">
-            <input required="" class="input" type="text" name="calle" id="calle" placeholder="Calle">
-            <input required="" class="input" type="number" name="numeroCalle" id="numeroCalle" placeholder="Numero">
+  <div class="heading">Registro</div>
+  <form (ngSubmit)="usuarioRegistro()" [formGroup]="formularioRegistro" id="form-register" class="form" method="POST" role="form">
+    <div class="direccion">
+      <input
+      required=""
+      class="input"
+      type="email"
+      name="email"
+      id="email"
+      formControlName="email"
+      placeholder="Correo Electronico"
+    />
+    <img src="../../../assets/logos/cerrar.png" [hidden]="email.valid || email.untouched">
+    <img src="../../../assets/logos/true.png" [hidden]="email.invalid || email.untouched">
+    @if(email.errors?.['minlength']){
+        <div class="invalid-feedback">
+            The email has to be completed! Introduce:
+            {{email.errors?.['minlength'].requiredLength - email.errors?.['minlength'].actualLength}}
+            more characters!
         </div>
-        <input required="" class="input" type="number" name="codigoP" id="codigoP" placeholder="Codigo Postal">
-        <input required="" class="input" type="text" name="provincia" id="provincia" placeholder="Provincia">
-        <input required="" class="input" type="file" name="avatar" id="avatar" placeholder="Seleccione un avatar">
-        <br><br>
-        <span class="forgot-password"><a href="#">¿Olvido su contraseña?</a></span>
-        <input class="login-button" type="submit" value="Crear Cuenta">
-        <input class="login-button" type="button" value="Iniciar Sesion" (click)="cambiarEnviar()">
-    </form>
-    <br><br>
+    } 
+  
+    </div>
+    <div class="direccion">
+      <input
+        required=""
+        class="input"
+        type="text"
+        name="usuario"
+        id="usuario"
+        formControlName="usuario"
+          
+        placeholder="Usuario"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="usuario.valid || usuario.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="usuario.invalid || usuario.untouched">
+      @if(usuario.errors?.['minlength']){
+          <div class="invalid-feedback">
+              The usuario has to be completed! Introduce:
+              {{usuario.errors?.['minlength'].requiredLength - usuario.errors?.['minlength'].actualLength}}
+              more characters!
+          </div>
+      } 
+
+    </div>
+    <div class="direccion">
+      <input
+        required=""
+        class="input"
+        type="password"
+        name="password1"
+        id="password1"
+        formControlName="password1"
+        placeholder="Password"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="password1.valid || password1.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="password1.invalid || password1.untouched">
+    </div>
+      @if(password1.errors?.['minlength']){
+          <div class="invalid-feedback">
+              ¡Introduzca:
+              {{password1.errors?.['minlength'].requiredLength - password1.errors?.['minlength'].actualLength}}
+              caracteres mas!
+          </div>
+      } 
+      
+    <div class = "direccion">
+      <input
+      required=""
+      class="input"
+      type="password"
+      name="password2"
+      id="password2"
+      formControlName="password2"
+      placeholder="Repita el password"
+    />
+    <img src="../../../assets/logos/cerrar.png" [hidden]="password2.valid || password2.untouched">
+    <img src="../../../assets/logos/true.png" [hidden]="password2.invalid || password2.untouched">
+    </div>
+    @if(password2.errors?.['minlength']){
+        <div class="invalid-feedback">
+          ¡Introduzca
+            {{password2.errors?.['minlength'].requiredLength - password2.errors?.['minlength'].actualLength}}
+            caracteres mas!
+        </div>
+    } 
+    @if(formularioRegistro.hasError('coinciden') && formularioRegistro.get('password2')?.touched)
+    {
+      <p class="invalid-feedback">Las contraseñas no coinciden</p>
+    }
+    <br>
+    <div class="direccion">
+      <input
+        required=""
+        class="input"
+        type="text"
+        name="calle"
+        id="calle"
+        formControlName="calle"
+        placeholder="Calle"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="calle.valid || calle.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="calle.invalid || calle.untouched">
+      
+      <input
+        required=""
+        class="input"
+        type="number"
+        name="numeroCalle"
+        id="numeroCalle"
+        formControlName="numeroCalle"
+        placeholder="Numero"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="numeroCalle.valid || numeroCalle.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="numeroCalle.invalid || numeroCalle.untouched">
+      
+    </div>
+    <br>
+    <div class="direccion">
+      <input
+        required=""
+        class="input"
+        type="number"
+        name="codigoP"
+        id="codigoP"
+        formControlName="codigoP"
+        placeholder="Codigo Postal"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="codigoP.valid || codigoP.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="codigoP.invalid || codigoP.untouched">
+      <input
+        required=""
+        class="input"
+        type="text"
+        name="provincia"
+        id="provincia"
+        formControlName="provincia"
+        placeholder="Provincia"
+      />
+      <img src="../../../assets/logos/cerrar.png" [hidden]="provincia.valid || provincia.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="provincia.invalid || provincia.untouched">
+    </div>
+    
+    <!-- <input
+      required=""
+      class="input"
+      type="file"
+      name="avatar"
+      id="avatar"
+      placeholder="Seleccione un avatar"
+    /> -->
+    <br /><br />
+    <span class="forgot-password"><a href="#">¿Olvido su contraseña?</a></span>
+    @if(formularioRegistro.valid){
+      <input class="login-button" type="submit" value="Crear Cuenta">
+    }
+    <input
+      class="login-button"
+      type="button"
+      value="Iniciar Sesion"
+      (click)="cambiarEnviar()"
+    />
+    @if(formularioRegistro.touched && formularioRegistro.hasError('required')){
+        <div class="col my-auto text-danger">
+          The post must have at least a name, a email, password or an image
+        </div>
+        }
+  </form>
+  <br /><br />
 </div>
-        
