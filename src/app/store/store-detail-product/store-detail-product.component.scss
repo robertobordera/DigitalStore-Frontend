@@ -113,7 +113,7 @@ main {
         @extend %mi-flexContainer-Articulos;
 
         .articulos {
-            width: 400px;
+            width: 300px;
             height: auto;
             background-color: $blanco;
             margin: 10px;
@@ -133,7 +133,7 @@ main {
                 color: $blanco;
                 height: auto;
                 position: absolute;
-                width: 25.10rem;
+                width: 19rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -173,7 +173,7 @@ main {
             img {
                 padding-left: 40px;
                 width: 80%;
-                height: 260px;
+                height: 60%;
                 cursor: pointer;
             }
 

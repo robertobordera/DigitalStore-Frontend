@@ -6,17 +6,17 @@
       required=""
       class="input"
       type="email"
-      name="email"
-      id="email"
-      formControlName="email"
+      name="correo"
+      id="correo"
+      formControlName="correo"
       placeholder="Correo Electronico"
     />
-    <img src="../../../assets/logos/cerrar.png" [hidden]="email.valid || email.untouched">
-    <img src="../../../assets/logos/true.png" [hidden]="email.invalid || email.untouched">
-    @if(email.errors?.['minlength']){
+    <img src="../../../assets/logos/cerrar.png" [hidden]="correo.valid || correo.untouched">
+    <img src="../../../assets/logos/true.png" [hidden]="correo.invalid || correo.untouched">
+    @if(correo.errors?.['minlength']){
         <div class="invalid-feedback">
-            The email has to be completed! Introduce:
-            {{email.errors?.['minlength'].requiredLength - email.errors?.['minlength'].actualLength}}
+            The correo has to be completed! Introduce:
+            {{correo.errors?.['minlength'].requiredLength - correo.errors?.['minlength'].actualLength}}
             more characters!
         </div>
     } 
@@ -27,18 +27,17 @@
         required=""
         class="input"
         type="text"
-        name="usuario"
-        id="usuario"
-        formControlName="usuario"
-          
-        placeholder="Usuario"
+        name="nombre"
+        id="nombre"
+        formControlName="nombre"
+        placeholder="nombre"
       />
-      <img src="../../../assets/logos/cerrar.png" [hidden]="usuario.valid || usuario.untouched">
-      <img src="../../../assets/logos/true.png" [hidden]="usuario.invalid || usuario.untouched">
-      @if(usuario.errors?.['minlength']){
+      <img src="../../../assets/logos/cerrar.png" [hidden]="nombre.valid || nombre.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="nombre.invalid || nombre.untouched">
+      @if(nombre.errors?.['minlength']){
           <div class="invalid-feedback">
-              The usuario has to be completed! Introduce:
-              {{usuario.errors?.['minlength'].requiredLength - usuario.errors?.['minlength'].actualLength}}
+              The nombre has to be completed! Introduce:
+              {{nombre.errors?.['minlength'].requiredLength - nombre.errors?.['minlength'].actualLength}}
               more characters!
           </div>
       } 
@@ -49,18 +48,18 @@
         required=""
         class="input"
         type="password"
-        name="password1"
-        id="password1"
-        formControlName="password1"
+        name="password"
+        id="password"
+        formControlName="password"
         placeholder="Password"
       />
-      <img src="../../../assets/logos/cerrar.png" [hidden]="password1.valid || password1.untouched">
-      <img src="../../../assets/logos/true.png" [hidden]="password1.invalid || password1.untouched">
+      <img src="../../../assets/logos/cerrar.png" [hidden]="password.valid || password.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="password.invalid || password.untouched">
     </div>
-      @if(password1.errors?.['minlength']){
+      @if(password.errors?.['minlength']){
           <div class="invalid-feedback">
               ¡Introduzca:
-              {{password1.errors?.['minlength'].requiredLength - password1.errors?.['minlength'].actualLength}}
+              {{password.errors?.['minlength'].requiredLength - password.errors?.['minlength'].actualLength}}
               caracteres mas!
           </div>
       } 
@@ -122,13 +121,13 @@
         required=""
         class="input"
         type="number"
-        name="codigoP"
-        id="codigoP"
-        formControlName="codigoP"
+        name="codigoPostal"
+        id="codigoPostal"
+        formControlName="codigoPostal"
         placeholder="Codigo Postal"
       />
-      <img src="../../../assets/logos/cerrar.png" [hidden]="codigoP.valid || codigoP.untouched">
-      <img src="../../../assets/logos/true.png" [hidden]="codigoP.invalid || codigoP.untouched">
+      <img src="../../../assets/logos/cerrar.png" [hidden]="codigoPostal.valid || codigoPostal.untouched">
+      <img src="../../../assets/logos/true.png" [hidden]="codigoPostal.invalid || codigoPostal.untouched">
       <input
         required=""
         class="input"
@@ -163,7 +162,7 @@
     />
     @if(formularioRegistro.touched && formularioRegistro.hasError('required')){
         <div class="col my-auto text-danger">
-          The post must have at least a name, a email, password or an image
+          The post must have at least a name, a correo, password or an image
         </div>
         }
   </form>

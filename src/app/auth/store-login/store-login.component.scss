@@ -16,7 +16,7 @@ main {
 
             img {
                 width: 70%;
-                opacity: 30%;
+                opacity: 40%;
             }
         }
 
@@ -180,6 +180,16 @@ main {
           
           .form {
             margin-top: 20px;
+          }
+
+          .form .direccion {
+            display: flex;
+            gap: 20px;
+          }
+          
+          .form .direccion img {
+            width: 30px;
+            height: 30px;
           }
           
           .form .input {

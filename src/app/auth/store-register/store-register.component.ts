@@ -2,6 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { AbstractControl, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../services/auth-service.service';
+import { Users } from '../interfaces/users';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-store-register',
@@ -13,6 +17,7 @@ import { Router } from '@angular/router';
 export class StoreRegisterComponent {
   @Output() enviarBooleano = new EventEmitter<boolean>();
   #router=inject(Router);
+  #authService = inject(AuthServiceService);
   #fb = inject(NonNullableFormBuilder);
 
   enviar = false
@@ -25,16 +30,16 @@ export class StoreRegisterComponent {
     this.enviarValorAlPadre();
   }
 
-  email = this.#fb.control('',[
+  correo = this.#fb.control('',[
     Validators.required,
     Validators.email
   ]);
 
-  usuario = this.#fb.control('',[
+  nombre = this.#fb.control('',[
     Validators.required
   ]);
 
-  password1 = this.#fb.control('',[
+  password = this.#fb.control('',[
     Validators.required,
     Validators.minLength(4)
   ]);
@@ -53,7 +58,7 @@ export class StoreRegisterComponent {
     Validators.required
   ]);
 
-  codigoP = this.#fb.control('',[
+  codigoPostal = this.#fb.control('',[
     Validators.required,
     Validators.minLength(2)
   ]);
@@ -68,18 +73,31 @@ export class StoreRegisterComponent {
   // ]);
 
   formularioRegistro = this.#fb.group({
-    email:this.email,
-    usuario:this.usuario,
-    password1:this.password1,
+    correo:this.correo,
+    nombre:this.nombre,
+    password:this.password,
     password2:this.password2,
     calle:this.calle,
     numeroCalle:this.numeroCalle,
-    codigoP:this.codigoP,
+    codigoPostal:this.codigoPostal,
     provincia:this.provincia
 },{validators: this.ValidarPassword()});
 
   usuarioRegistro(){
+    const usuarioRegistro : Users = {
+      ...this.formularioRegistro.getRawValue(),
+    };
 
+    this.#authService.register(usuarioRegistro).subscribe({
+      next:()=>{
+        this.formularioRegistro.reset();
+        Swal.fire({
+          title:"¡Registro Completado!",
+          icon:"success",
+          confirmButtonText:"Entenido"
+        });
+      }
+    })
   }
 
   validClasses(control: FormControl, validClass: string, errorClass: string) {
@@ -91,9 +109,9 @@ export class StoreRegisterComponent {
 
   ValidarPassword():ValidatorFn{
     return (control: AbstractControl): ValidationErrors | null => {
-      const password1 = control.get('password1')?.value;
+      const password = control.get('password')?.value;
       const password2 = control.get('password2')?.value;
-      if (password1 != password2) {
+      if (password != password2) {
         return { coinciden: true };
       }
       return null;      

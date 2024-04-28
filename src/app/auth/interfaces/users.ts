@@ -1,16 +1,20 @@
 export interface Users {
    id?: number;
-   name: string;
-   email: string;
-   avatar: string;
-   lat: number;
-   lng: number;
+   nombre: string;
    password?: string;
+   correo: string;
+   calle:string;
+   numeroCalle:string;
+   codigoPostal:string;
+   provincia:string
+   lat?: number;
+   lng?: number;
+   
 }
 
 
 export interface UserLogin {
-    email: string;
+    correo: string;
     password: string;
     lat?: number;
     lng?: number;

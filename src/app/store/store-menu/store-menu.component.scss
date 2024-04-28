@@ -25,6 +25,24 @@ $color-rojoOscuro: darken($rojo, 25%);
 
 }
 
+%mi-desplegable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    height: auto;
+    width: auto;
+    background-color: white;
+    box-shadow: 6px 6px 10px black;
+    left: 0;
+    text-align: center;
+    font-size: 1.3rem;
+
+    li {
+        padding: 20px;
+    }
+}
+
 // * {
 //     margin: 0;
 //     padding: 0;
@@ -43,6 +61,7 @@ header {
         @extend %mi-flexContainer-Header;
 
         .caja img {
+
             // transition: transform 2s;
             &:hover {
                 -webkit-transform: rotate(360deg);
@@ -55,7 +74,7 @@ header {
             font-family: 'Salsa', cursive;
             font-size: 3rem;
             padding-left: 15px;
-            
+
 
             &:hover {
                 box-shadow: 6px 6px 15px $morado-claro;
@@ -101,21 +120,8 @@ header {
 
             li {
                 &:hover .sub-menu {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    position: absolute;
-                    height: auto;
-                    width: auto;
-                    background-color: white;
-                    box-shadow: 6px 6px 10px black;
-                    left: 0;
-                    text-align: center;
-                    font-size: 1.3rem;
 
-                    li {
-                        padding: 20px;
-                    }
+                    @extend %mi-desplegable;
                 }
 
                 >a {
@@ -164,6 +170,45 @@ header {
                     margin: 1rem;
                 }
             }
+        }
+        .sub-usuario {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            height: auto;
+            width: auto;
+            background-color: white;
+            box-shadow: -6px 6px 10px black;
+            right:0;
+            text-align: center;
+            font-size: 1.3rem;
+            list-style-type: none;
+            z-index: 9999;
+            
+
+            li {
+                padding: 20px;
+               
+
+                >a {
+                    text-decoration: none;
+                    color: black;
+                    font-size: 130%;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: $morado-claro;
+                    }
+
+                    &:active {
+                        text-decoration: underline;
+                    }
+
+                }
+            }
+
+            
         }
     }
 }

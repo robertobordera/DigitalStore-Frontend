@@ -7,28 +7,32 @@
       @if(login){
       <div class="container">
         <div class="heading">Login</div>
-        <form>
+        <form (ngSubmit)="usuarioLogin()" [formGroup]="loginFormulario" id="form-register" class="form" method="POST" role="form">
           <input
             required=""
             class="input"
             type="email"
-            name="email"
-            id="email"
+            name="correo"
+            id="correo"
+            formControlName="correo"
             placeholder="Correo Electronico"
           />
           <input
             required=""
             class="input"
-            type="contraseña"
-            name="contraseña"
+            type="password"
+            name="password"
             id="password"
+            formControlName="password"
             placeholder="contraseña"
           />
           <br /><br />
           <span class="forgot-password"
             ><a href="#">¿Olvido su contraseña?</a></span
           >
-          <input class="login-button" type="submit" value="Iniciar Sesion" />
+          @if(loginFormulario.valid){
+            <input class="login-button" type="submit" value="Iniciar Sesion" />
+          }
           <input
             class="login-button"
             type="button"

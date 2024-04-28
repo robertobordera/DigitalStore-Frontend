@@ -68,6 +68,7 @@ export class StoreProductComponent implements OnInit {
         this.#productosServices.obtenerProductos().subscribe({
           next: (productos) => {
             this.productos = productos;
+            this.id = 0
           },
           error: (error) => console.error(error),
         });

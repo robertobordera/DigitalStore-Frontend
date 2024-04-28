@@ -11,6 +11,11 @@ export const routes: Routes = [
     loadChildren:()=>
       import('./auth/auth.routes').then((m)=>m.loginRoutes)
   },
+  {
+    path: 'marketPlace',
+    loadChildren:()=>
+      import('./marketPlace/marketPlace.routes').then((m)=>m.marketPlaceRoutes)
+  },
   { path: '', redirectTo: '/store', pathMatch: 'full' },
   { path: '**', redirectTo: '/store' },
 ];

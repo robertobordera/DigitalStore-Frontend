@@ -7,14 +7,20 @@
                 Store</span></h1>
         </div>  
 
-        <div class="caja">
+        <!-- <div class="caja">
             <input type="search" placeholder="Introduzca el producto que dea buscar">
             <img src="../../../assets/logos/cdd1cdf2-ae1e-4d6e-a134-3d73bd342b63.png" class="lupa" alt="lupa" width="30px" height="30px">
-        </div>
+        </div> -->
         
         <div class="caja">
-            <img src="../../../assets/logos/login.png" class="" alt="usuario" width="30px" height="30px" (click)="login()">
-            <p class="usuario">Mi cuenta</p>
+            @if(user?.id){
+                <img src="../../../assets/logos/login.png" class="" alt="usuario" width="30px" height="30px" (click)="ensenyarSubmenu()">
+                <p class="usuario" (click)="ensenyarSubmenu()">{{user?.nombre}}</p>
+            }
+            @else {
+                <img src="../../../assets/logos/login.png" class="" alt="usuario" width="30px" height="30px" (click)="login()">
+                <p class="usuario">Mi cuenta</p>
+            }
             <img src="../../../assets/logos/carrito.svg" alt="usuario" width="30px" height="30px">
             <p class="usuario">Mi Cesta</p>
         </div>
@@ -41,7 +47,18 @@
                 </ul>
             </li>
             <li><a href="ofertas.html">Ofertas</a></li>
-            <li> <a href="carrito.html">Hacer un pedido</a></li>
+            <li><a  [routerLink]="['/marketPlace/products']">MarketPlace</a></li>
+            @if(mostrarDesplegable){
+                <ul class="sub-usuario">
+                    <li><a href="">Mi cuenta</a></li>
+                    <li><a href="">Mis productos</a></li>
+                    <li><a href="">Favoritos</a></li>
+                    <li><a href="">Opiniones</a></li>
+                    <li><a href="">Ajustes</a></li>
+                    <li><a href="">Historial</a></li>
+                    <li><a href="" (click)="cerrarSesion()">Cerrar Sesion</a></li>
+                </ul>
+            }
         </ul>
     </nav>
     

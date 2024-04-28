@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UserLogin, Users } from '../interfaces/users';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { catchError, map, of } from 'rxjs';
-import { TokenResponse } from '../interfaces/responses';
+import { TokenResponse, UsuarioResponse } from '../interfaces/responses';
 
 
 @Injectable({
@@ -20,17 +20,18 @@ export class AuthServiceService {
     return this.#logged;
   }
 
-  login(data: UserLogin): Observable<void> {
+  login(data: UserLogin): Observable<TokenResponse> {
     return this.#http.post<TokenResponse>('auth/login', data).pipe(map(r => {
-      this.cookieService.set('token', r.accessToken);
+      this.cookieService.set('token', r.token);
       this.#logged.set(true);
+      return r;
     }))
   }
 
   loginGoogle(data: String): Observable<void> {
     const data2 = {token: data};
     return this.#http.post<TokenResponse>('auth/google', data2).pipe(map(r => {
-      this.cookieService.set('token', r.accessToken);
+      this.cookieService.set('token', r.token);
       this.#logged.set(true);
     }))
   }
@@ -38,13 +39,13 @@ export class AuthServiceService {
   loginFacebook(data: String): Observable<void> {
     const data3 = {token: data};
     return this.#http.post<TokenResponse>('auth/facebook', data3).pipe(map(r => {
-      this.cookieService.set('token', r.accessToken);
+      this.cookieService.set('token', r.token);
       this.#logged.set(true);
     }))
   }
 
   register(user: Users): Observable<void> {
-    return this.#http.post<void>('auth/register', user);
+    return this.#http.post<void>('auth/registro', user);
   }
   
   logout(): void{
@@ -72,5 +73,15 @@ export class AuthServiceService {
       );
     }
     return of(false);    
-  }  
+  }
+
+  getUser():Observable<Users>{
+    return this.#http.get<UsuarioResponse>('auth/obtenerUsuario').pipe(
+      map((resp)=>resp.usuario)
+    );
+  }
+
+  logout2():Observable<void>{
+    return this.#http.get<void>('auth/logout');
+  }
 }
