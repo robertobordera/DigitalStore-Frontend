@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { UserLogin } from '../interfaces/users';
 import { AuthServiceService } from '../services/auth-service.service';
 import Swal from 'sweetalert2';
+import { GeolocationService } from '../../services/geolocation.service';
 
 @Component({
   selector: 'app-store-login',
@@ -30,6 +31,10 @@ export class StoreLoginComponent implements OnInit {
   #authService = inject(AuthServiceService);
   #router = inject(Router);
   #fb = inject(NonNullableFormBuilder);
+  #geolocationService = inject(GeolocationService);
+
+  latitud = 0;
+  longitud = 0;
 
   recibirBooleanoDelHijo(valor: boolean) {
     this.booleanoRecibido = valor;
@@ -42,7 +47,15 @@ export class StoreLoginComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.obtainGeolocation();
+  }
+
+  async obtainGeolocation() {
+    const coords = await this.#geolocationService.getLocation();
+    this.latitud = coords.latitude;
+    this.longitud = coords.longitude;
+  }
 
   correo = this.#fb.control('', [Validators.required, Validators.email]);
 
@@ -62,6 +75,8 @@ export class StoreLoginComponent implements OnInit {
   usuarioLogin() {
     const usuarioLogin: UserLogin = {
       ...this.loginFormulario.getRawValue(),
+      latitud: this.latitud,
+      longitud: this.longitud
     };
     this.#authService.login(usuarioLogin).subscribe(
       (response) => {

@@ -1,41 +1,50 @@
 <main>
     <section class="contenedor">
+        
         <div class="usuario-informacion">
             <div class="detalles-usuario">
                 <img src="../../../assets/logos/avatar.png" alt="logo">
                 <div class="info">
-                    <p>robertobp98</p>
+                    <p>{{marketPlace.usuario!.nombre}}</p>
                     <img src="../../../assets/logos/3estrella.png">
                 </div>
             </div>
             <div class="ventas-valoraciones">
                 <div class="ventas">
                     <img src="../../../assets/logos/ventas2.png"  alt="dos">
-                    <p>1368  ventas</p>
+                    <p>{{marketPlace.usuario!.ventas_count}}  ventas</p>
                 </div><br>
                 <p> 409 valoraciones</p>
             </div>
             <div class="favoritos-mensaje">
                 <img src="../../../assets/logos/corazonvacio.png" alt="uno">
-                <img src="../../../assets/logos/mapa2.png" alt="uno"> 
+                <img src="../../../assets/logos/mapa2.png" alt="uno" (click)="toggle()"> 
             </div>
         </div>
 
         <div class="imagen">
-            <img src="../../../assets/logos/bicicleta.jpg">
+            @if(toggled){
+                <img src="../../../assets/logos/bicicleta.jpg">
+            }
+            @if(!toggled){
+                <bm-map [coords]="coordinates">
+                    <bm-marker [coords]="coordinates" color="blue"></bm-marker>
+                </bm-map>
+            }
         </div>
 
         <div class="precio-direccion">
-            <p>256€</p>
+            <p>{{marketPlace.precio}}€</p>
+            <data>Subido: {{marketPlace.fechaSubida}}</data>
             <div class="direccion">
                 <img src="../../../assets/logos/ubicacion.png" alt="j">
-                <address>Calle Mayor,98</address>
+                <address>{{marketPlace.usuario?.calle}},{{marketPlace.usuario?.numeroCalle}}</address>
             </div>
         </div>
 
         <div class="nombre-descripcion">
-            <p class="nombre">Vendo una bicileta por falta de uso</p>
-            <p class="descripcion">Una bicicleta es un vehículo de dos ruedas impulsado por el esfuerzo humano, diseñado para desplazamientos personales, recreación, ejercicio físico y transporte. Combinando elementos de eficiencia, versatilidad y sostenibilidad, las bicicletas ofrecen una amplia gama de beneficios tanto para el individuo como para el medio ambiente.</p>
+            <p class="nombre">{{marketPlace.titulo}}o</p>
+            <p class="descripcion">{{marketPlace.descripcion}}</p>
         </div>
 
         <div class="boton">

@@ -84,20 +84,20 @@ export class StoreRegisterComponent {
 },{validators: this.ValidarPassword()});
 
   usuarioRegistro(){
-    const usuarioRegistro : Users = {
-      ...this.formularioRegistro.getRawValue(),
-    };
+    // const usuarioRegistro : Users = {
+    //   ...this.formularioRegistro.getRawValue(),
+    // };
 
-    this.#authService.register(usuarioRegistro).subscribe({
-      next:()=>{
-        this.formularioRegistro.reset();
-        Swal.fire({
-          title:"¡Registro Completado!",
-          icon:"success",
-          confirmButtonText:"Entenido"
-        });
-      }
-    })
+    // this.#authService.register(usuarioRegistro).subscribe({
+    //   next:()=>{
+    //     this.formularioRegistro.reset();
+    //     Swal.fire({
+    //       title:"¡Registro Completado!",
+    //       icon:"success",
+    //       confirmButtonText:"Entenido"
+    //     });
+    //   }
+    // })
   }
 
   validClasses(control: FormControl, validClass: string, errorClass: string) {

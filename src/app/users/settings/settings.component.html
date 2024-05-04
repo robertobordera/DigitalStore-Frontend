@@ -1,0 +1,159 @@
+<main class="contenedor">
+    <div class="imagen-correo">
+        <div class="imagen">
+            <img src="../../../assets/logos/avatar.png">
+            
+            <div class="iconos">
+                @if(toggled){
+                    <p>{{usuarioMe?.nombre}}</p>
+                }
+                @else {
+                    <form (ngSubmit)="usuarioNombre()" [formGroup]="formularioNombre">
+                        <input type="text" maxlength="20" size="20" formControlName="nombre"><br>
+                        <div class="boton">
+                            <button class="btn-shine" type="submit">
+                                <span>Cambiar usuario</span>
+                            </button>
+                        </div>
+                    </form>
+                }
+                <img src="../../../assets/logos/lapiz.png" (click)="toggle()">
+                <img src="../../../assets/logos/galeria.png">
+            </div>
+        </div>
+        <div class="correo">
+            <form (ngSubmit)="usuarioCorreo()" [formGroup]="formularioCorreo">
+                <label for="email">Antiguo correo:</label><br>
+                <div class="direccion-input">
+                    <input type="email" name="correo_antiguo" id="correo" required=""
+                    formControlName="correo_antiguo"><br><br>
+                    <img src="../../../assets/logos/cerrar.png" [hidden]="correo_antiguo.valid || correo_antiguo.untouched">
+                    <img src="../../../assets/logos/true.png" [hidden]="correo_antiguo.invalid || correo_antiguo.untouched">
+                </div>
+                @if(formularioCorreo.hasError('coincidenAntiguo') && formularioCorreo.get('correo_antiguo')?.touched)
+                {
+                <p class="invalid-feedback">Error: ¡Introduce el correo actual!</p>
+                }
+
+                <label for="email">Nuevo correo:</label><br>
+                <div class="direccion-input">
+                    <input type="email" name="correo" id="correo"
+                    formControlName="correo"><br><br>
+                    <img src="../../../assets/logos/cerrar.png" [hidden]="correo.valid || correo.untouched">
+                    <img src="../../../assets/logos/true.png" [hidden]="correo.invalid || correo.untouched">
+                </div>
+
+                <label for="email">Repita el correo:</label><br>
+                <div class="direccion-input">
+                    <input type="email" name="correo_nuevo2" id="correo_nuevo2"
+                    formControlName="correo_nuevo2">
+                    <img src="../../../assets/logos/cerrar.png" [hidden]="correo_nuevo2.valid || correo_nuevo2.untouched">
+                    <img src="../../../assets/logos/true.png" [hidden]="correo_nuevo2.invalid || correo_nuevo2.untouched">
+                </div>
+                @if(formularioCorreo.hasError('coinciden') && formularioCorreo.get('correo_nuevo2')?.touched)
+                {
+                    <p class="invalid-feedback">Error: ¡Los dos correos deben coincidir!</p>
+                }
+
+                @if(formularioCorreo.valid){
+                    <div class="boton">
+                        <button class="btn-shine" type="submit">
+                            <span>Cambiar correo</span>
+                        </button>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+
+    <div class="password">
+        <form (ngSubmit)="usuarioPassword()" [formGroup]="formularioPassword">
+            <label for="antiguo_pass">Antigua contraseña:</label><br>
+            <div class="direccion-input">
+                <input type="password" name="antiguo_pass" id="antiguo_pass"
+                formControlName="antiguo_pass"><br><br>
+                <img src="../../../assets/logos/cerrar.png" [hidden]="antiguo_pass.valid || antiguo_pass.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="antiguo_pass.invalid || antiguo_pass.untouched">
+            </div>
+            @if(formularioPassword.hasError('coincidenAntiguo') && formularioPassword.get('antiguo_pass')?.touched)
+            {
+                <p class="invalid-feedback">Error: ¡Introduce la contraseña actual!</p>
+            }
+
+            <label for="nuevo_pass1">Nueva contraseña:</label><br>
+            <div class="direccion-input">
+                <input type="password" name="password" id="password"
+                formControlName="password"><br><br>
+                <img src="../../../assets/logos/cerrar.png" [hidden]="password.valid || password.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="password.invalid || password.untouched">
+                <br><br>
+            </div>
+
+            <label for="nuevo_pass2">Repita la contraseña:</label><br>
+            <div class="direccion-input">
+                <input type="password" name="nuevo_pass2" id="nuevo_pass2"
+                formControlName="nuevo_pass2"><br><br>
+                <img src="../../../assets/logos/cerrar.png" [hidden]="nuevo_pass2.valid || nuevo_pass2.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="nuevo_pass2.invalid || nuevo_pass2.untouched">    
+            </div>
+            @if(formularioPassword.hasError('coinciden') && formularioPassword.get('nuevo_pass2')?.touched)
+            {
+                <p class="invalid-feedback">Error: ¡Las dos contraseñas deben coincidir!</p>
+            }
+
+            @if(formularioPassword.valid){
+                <div class="boton">
+                    <button class="btn-shine" type="submit">
+                        <span>Cambiar contraseña</span>
+                    </button>
+                </div>
+            }
+        </form>
+    </div>
+
+    <div class="direccion">
+        <form (ngSubmit)="usuarioDireccion()" [formGroup]="formularioDireccion">
+            <div class="calle-numero">
+                <label for="calle">Calle:</label><br>
+                <div class="direccion-input">
+                    <input type="text" name="calle" id="calle"
+                    formControlName="calle" placeholder="{{usuarioMe?.calle}}"><br>
+                    <img src="../../../assets/logos/cerrar.png" [hidden]="calle.valid || calle.untouched">
+                    <img src="../../../assets/logos/true.png" [hidden]="calle.invalid || calle.untouched">
+                </div>
+
+                <label for="numeroCalle">Nº Calle:</label><br>
+                <div class="direccion-input">
+                    <input type="text" name="numeroCalle" id="numeroCalle"
+                    formControlName="numeroCalle" placeholder="{{usuarioMe?.numeroCalle}}"><br>
+                    <img src="../../../assets/logos/cerrar.png" [hidden]="numeroCalle.valid || numeroCalle.untouched">
+                    <img src="../../../assets/logos/true.png" [hidden]="numeroCalle.invalid || numeroCalle.untouched">
+                </div>
+            </div><br>
+
+            
+            <label for="codigoPostal">Codigo Postal:</label><br>
+            <div class="direccion-input">
+                <input type="text" name="codigoPostal" id="codigoPostal"
+                formControlName="codigoPostal" placeholder="{{usuarioMe?.codigoPostal}}"><br>
+                <img src="../../../assets/logos/cerrar.png" [hidden]="codigoPostal.valid || codigoPostal.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="codigoPostal.invalid || codigoPostal.untouched">
+            </div>
+            <br>
+
+            <label for="provincia">Provincia:</label><br>
+            <div class="direccion-input">
+                <input type="text" name="provincia" id="provincia"
+                formControlName="provincia" placeholder="{{usuarioMe?.provincia}}">
+                <img src="../../../assets/logos/cerrar.png" [hidden]="provincia.valid || provincia.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="provincia.invalid || provincia.untouched">
+            </div>
+            
+            <div class="boton">
+                <button class="btn-shine">
+                    <span>Cambiar direccion</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</main>

@@ -30,213 +30,31 @@
             </button>
         </div>
     <div class="contenedor-productos">
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg" (click)="elementoDetalle(1)">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
+        @for(mark of marketPlace;track mark.id){
+            <article class="producto">
+                <section>
                     <div>
-    
+                        <img src="../../../assets/logos/bicicleta.jpg" (click)="elementoDetalle(mark.id)">
                     </div>
-                </div>
-            </section>
-        </article>
+                    <div class="contenido">
+                        <div class="favoritos">
+                            <img src="">
+                            <p>{{mark.precio}}€</p>
+                            <img src="../../../assets/logos/corazonvacio.png">
+                        </div>
+                        <p>{{mark.titulo}}</p>
+                        <div>
+        
+                        </div>
+                    </div>
+                </section>
+            </article>
+        }@empty {
+            <div class="loader-container">
+                <div class="loader"></div>
+                <div class="loader-text">Loading...</div>
+            </div>
 
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/corazonvacio.png">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/logo.jpg">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/logo.jpg">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/logo.jpg">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/logo.jpg">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
-
-        <article class="producto">
-            <section>
-                <div>
-                    <img src="../../../assets/logos/bicicleta.jpg">
-                </div>
-                <div class="contenido">
-                    <div class="favoritos">
-                        <img src="">
-                        <p>260€</p>
-                        <img src="../../../assets/logos/logo.jpg">
-                    </div>
-                    <p>Vendo mi bicicleta porque esta muy usada y la quiero vender</p>
-                    <div>
-    
-                    </div>
-                </div>
-            </section>
-        </article>
+        }
     </div>
 </main>

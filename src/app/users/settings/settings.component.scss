@@ -1,0 +1,317 @@
+%mi-flexContainer-Header {
+    .boton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 20px;
+
+        button {
+            position: relative;
+            margin: 0;
+            padding: 17px 35px;
+            outline: none;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            background-color: #fff;
+            border: 1px solid rgba(22, 76, 167, 0.6);
+            border-radius: 10px;
+            color: #1d89ff;
+            font-weight: 400;
+            font-family: inherit;
+            z-index: 0;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+            margin-top: 20px;
+        }
+
+        button span {
+            color: #164ca7;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.7px;
+        }
+
+        button:hover {
+            animation: rotate624 0.7s ease-in-out both;
+        }
+
+        button:hover span {
+            animation: storm1261 0.7s ease-in-out both;
+            animation-delay: 0.06s;
+        }
+
+        @keyframes rotate624 {
+            0% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+
+            25% {
+                transform: rotate(3deg) translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: rotate(-3deg) translate3d(0, 0, 0);
+            }
+
+            75% {
+                transform: rotate(1deg) translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes storm1261 {
+            0% {
+                transform: translate3d(0, 0, 0) translateZ(0);
+            }
+
+            25% {
+                transform: translate3d(4px, 0, 0) translateZ(0);
+            }
+
+            50% {
+                transform: translate3d(-3px, 0, 0) translateZ(0);
+            }
+
+            75% {
+                transform: translate3d(2px, 0, 0) translateZ(0);
+            }
+
+            100% {
+                transform: translate3d(0, 0, 0) translateZ(0);
+            }
+        }
+
+        .btn-shine {
+            border: 1px solid;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn-shine span {
+            z-index: 20;
+        }
+
+        .btn-shine:after {
+            background: #38ef7d;
+            content: "";
+            height: 155px;
+            left: -75px;
+            opacity: 0.4;
+            position: absolute;
+            top: -50px;
+            transform: rotate(35deg);
+            transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+            width: 50px;
+            z-index: -10;
+        }
+
+        .btn-shine:hover:after {
+            left: 120%;
+            transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+    }
+}
+
+.contenedor {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgb(8, 40, 85), rgb(149, 149, 230));
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .imagen-correo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid aqua;
+        margin-left: 100px;
+        margin-right: 100px;
+        gap: 20px;
+        padding: 30px;
+
+        .imagen {
+            grid-row: 1/2;
+            grid-column: 1 / 2;
+            display: flex;
+
+            .iconos {
+                display: flex;
+                gap: 10px;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+
+                @extend %mi-flexContainer-Header;
+            }
+        }
+
+        .correo {
+            grid-row: 1/2;
+            grid-column: 2 / 3;
+
+            form input {
+                width: 90%;
+                background: white;
+                border: none;
+                padding: 15px 20px;
+                border-radius: 20px;
+                margin-top: 15px;
+                box-shadow: #cff0ff 0px 10px 10px -5px;
+                border-inline: 2px solid transparent;
+
+            }
+
+            form input::-moz-placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            form input::placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            form input:focus {
+                outline: none;
+                border-inline: 2px solid #12B1D1;
+            }
+
+            @extend %mi-flexContainer-Header;
+
+        }
+    }
+
+    .password {
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid aqua;
+        margin-left: 100px;
+        margin-right: 100px;
+        gap: 20px;
+        padding: 30px;
+        margin-top: 30px;
+
+        form input {
+            width: 90%;
+            background: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: #cff0ff 0px 10px 10px -5px;
+            border-inline: 2px solid transparent;
+        }
+
+        form input::-moz-placeholder {
+            color: rgb(170, 170, 170);
+        }
+
+        form input::placeholder {
+            color: rgb(170, 170, 170);
+        }
+
+        form input:focus {
+            outline: none;
+            border-inline: 2px solid #12B1D1;
+        }
+
+        @extend %mi-flexContainer-Header;
+    }
+
+    .direccion {
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid aqua;
+        margin-left: 100px;
+        margin-right: 100px;
+        gap: 20px;
+        padding: 30px;
+        margin-top: 30px;
+
+        form {
+            .calle-numero {
+                display: flex;
+                gap: 20px;
+            }
+
+
+        }
+
+        form input {
+            width: 90%;
+            background: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: #cff0ff 0px 10px 10px -5px;
+            border-inline: 2px solid transparent;
+        }
+
+        form input::-moz-placeholder {
+            color: rgb(170, 170, 170);
+        }
+
+        form input::placeholder {
+            color: rgb(170, 170, 170);
+        }
+
+        form input:focus {
+            outline: none;
+            border-inline: 2px solid #12B1D1;
+        }
+
+        @extend %mi-flexContainer-Header;
+    }
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+.required {
+    color: red;
+}
+
+.direccion-input {
+    display: flex;
+
+    img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .contenedor {
+        .imagen-correo {
+            margin-left: 100px;
+            margin-right: 100px;
+            grid-template-columns: 1fr;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* Una sola columna cuando el tamaño de la pantalla es menor o igual a 768px */
+            .correo {
+                grid-row: 2 / 3;
+                /* Mover el elemento .correo hacia abajo */
+                grid-column: 1 / 2;
+                /* Asegurarse de que ocupe toda la única columna disponible */
+            }
+        }
+    }
+}
