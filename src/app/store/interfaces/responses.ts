@@ -1,4 +1,4 @@
-import { Producto, ProductoValoracion } from "./productos";
+import { Producto, ProductoValoracion, Carrito } from "./productos";
 
 export interface ProductosResponse{
     success: boolean;
@@ -18,4 +18,13 @@ export interface ProductosValoracionesResponse{
 export interface ProductoCategoriaResponse{
     success: boolean;
     productoCategoria: Producto[];
+}
+
+export interface CarritoResponse{
+    success:boolean,
+    message:string
+}
+
+export interface CarritoResponse2{
+    carritoProducts:Carrito[];
 }

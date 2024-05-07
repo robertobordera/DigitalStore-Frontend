@@ -61,7 +61,8 @@
                     <br><br><br>
                     <div>
                     <p class="precio">{{producto.precio}}€</p><br><br>
-                     <a href="carrito.html"><p class="animacion">Añadir al carrito</p></a>
+                     <p class="animacion" (click)="anyadirCarrito(producto.id, usuario.id ?? 0)"
+                        >Añadir al carrito</p>
                     <p class="item item-1">{{producto.marcaModelo}}</p><br>
                     </div>
                 </section>   

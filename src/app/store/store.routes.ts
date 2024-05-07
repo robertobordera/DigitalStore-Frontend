@@ -9,10 +9,17 @@ export const storeRoutes:Routes = [
                 m => m.StoreProductComponent),
     },
     {
+        path: 'shopping-cart/:id',
+        loadComponent: () =>
+            import('./shopping-cart/shopping-cart.component').then(
+                (m) => m.ShoppingCartComponent
+            )
+    },
+    {
         path: ':id',
         loadComponent: () =>
             import('./store-detail-product/store-detail-product.component').then(
                 (m) => m.StoreDetailProductComponent
             )
-    }
+    },
 ]

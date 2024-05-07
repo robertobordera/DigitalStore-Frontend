@@ -1,9 +1,13 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Producto } from '../interfaces/productos';
+import { Producto, anyadirCarrito } from '../interfaces/productos';
 import { StoreServiceService } from '../services/store-service.service';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
+import { AuthServiceService } from '../../auth/services/auth-service.service';
+import { UserService } from '../../users/services/user-service.service';
+import { Users } from '../../auth/interfaces/users';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-store-product',
   standalone: true,
@@ -15,7 +19,9 @@ export class StoreProductComponent implements OnInit {
   #location = inject(Location);
   #router = inject(Router);
   productos: Producto[] = [];
+  usuario!:Users
   #productosServices = inject(StoreServiceService);
+  #authServices = inject(UserService);
   id!: number;
   $valorURL: string = "";
 
@@ -74,6 +80,38 @@ export class StoreProductComponent implements OnInit {
         });
       }
     });
+
+    this.#authServices.obtenerMisDatos().subscribe({
+      next:(user) => {
+        this.usuario = user
+        console.log(this.usuario)
+      }
+    })
+  }
+
+  anyadirCarrito(producto_id:number,usuario_id:number){
+    const añadir:anyadirCarrito = {
+      producto_id:producto_id,
+      usuario_id:usuario_id
+    }
+
+    this.#productosServices.AnyadirCarrito(añadir).subscribe(
+      (response) =>{
+        if(response.success){
+          Swal.fire({
+            title: response.message,
+            icon: 'success',
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: '#3085d6',
+            allowOutsideClick: false,
+          });
+
+          setTimeout(function(){
+            window.location.reload();
+          },1500)
+        }
+      }
+    )
   }
   elementoDetalle(id: number) {
     this.#router.navigate(['/store', id]);

@@ -54,4 +54,8 @@ export class StoreMenuComponent implements OnInit {
     this.#authService.logout();
     this.#router.navigate(['/auth/login']);
   }
+
+  carrito(){
+    this.#router.navigate(['/store/shopping-cart',this.user?.id]);
+  }
 }

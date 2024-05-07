@@ -17,3 +17,16 @@ export interface ProductoValoracion{
     puntuacion:number,
     fecha:Date
 }
+
+export interface anyadirCarrito{
+    producto_id:number,
+    usuario_id:number
+}
+
+export interface Carrito{
+    id:number,
+    marcaModelo:string,
+    imagen?:string,
+    precio:number,
+    entrega:string,
+}

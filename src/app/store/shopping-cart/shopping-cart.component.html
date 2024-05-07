@@ -1,0 +1,50 @@
+<main>
+    <br><br>
+    
+    <h2> Mi cesta</h2><br>
+    <hr><br><br>
+    <div class="cesta">
+
+        @for(carrito of carritos;track carrito.id){
+            <article class="elemento-cesta1">
+                <div class="cesta-productos">
+                    <section class="imagen-cesta">
+                        <a href="elemento-detallePortatiles.html">
+                            <img src="../../../assets/logos/monitor.jpg" alt="imagen">
+                        </a>
+                    </section>
+                    <section class="descripciones-cesta">
+                        <p>{{carrito.marcaModelo}}</p>
+                        <p class="precio">{{carrito.precio}}€</p>
+                        <p class="entrega">¡{{carrito.entrega}}!</p>
+                    </section>
+                </div>
+                <section class="cantidad-cesta">
+                    <p>1</p>
+                </section>
+            </article>
+        }
+
+    </div><br><br>
+
+    <hr>
+
+    <div class="botones-confirmar">
+        <p>Resumen</p><br>
+        
+        <div class="total">
+            <p>Total(Incluyendo impuestos)</p>
+            <p>748,90€</p>
+        </div><br>
+        
+        <hr>
+        <br>
+        <div class="boton">
+            <button class="btn-shine" type="submit">
+                <span>Realizar compra</span>
+            </button>
+        </div>
+    </div>
+    
+</main>
+
