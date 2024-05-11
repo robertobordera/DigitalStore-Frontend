@@ -22,7 +22,40 @@
             </div>
         </div>
 
-        <div class="imagen">
+        <hr>
+
+        <div class="caja">
+            <h2>{{marketPlace.titulo}}</h2>
+
+            @for(comment of comentarios();track comment.id){
+                <div class="comentario-caja">
+                    <img src="../../../assets/logos/avatar.png" alt="logo">
+                    <div class="comentario">
+                        <div class="datos">
+                            <p>{{comment.nombre}}</p>
+                            <data>{{comment.fecha}}</data>
+                        </div>
+                        <p>{{comment.comentario}}<br><br>
+                    </div>
+                </div>
+            }
+        </div>
+        <hr>
+
+        <div class="enviar">
+            <form [formGroup]="formComment" (ngSubmit)="addComment()">
+                <input type="text" 
+                placeholder="Deja un comentario"
+                name="comentario"
+                id="comentario"
+                formControlName="comentario">
+                <button type="submit">
+                    <img src="../../../assets/logos/telegram.png">
+                </button>
+            </form>
+        </div>
+
+        <!-- <div class="imagen">
             @if(toggled){
                 <img src="../../../assets/logos/bicicleta.jpg">
             }
@@ -51,6 +84,6 @@
             <button class="btn-shine">
                 <span>Contactar</span>
             </button>
-        </div>
+        </div> -->
     </section>
 </main>

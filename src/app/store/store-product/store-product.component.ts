@@ -21,7 +21,7 @@ export class StoreProductComponent implements OnInit {
   productos: Producto[] = [];
   usuario!:Users
   #productosServices = inject(StoreServiceService);
-  #authServices = inject(UserService);
+  #userService = inject(UserService);
   id!: number;
   $valorURL: string = "";
 
@@ -81,12 +81,12 @@ export class StoreProductComponent implements OnInit {
       }
     });
 
-    this.#authServices.obtenerMisDatos().subscribe({
-      next:(user) => {
-        this.usuario = user
-        console.log(this.usuario)
-      }
-    })
+    this.#userService.obtenerMisDatos().subscribe({
+      next: (usuario) => {
+        this.usuario = usuario;
+        console.log(this.usuario);
+      },
+    });
   }
 
   anyadirCarrito(producto_id:number,usuario_id:number){
@@ -106,9 +106,6 @@ export class StoreProductComponent implements OnInit {
             allowOutsideClick: false,
           });
 
-          setTimeout(function(){
-            window.location.reload();
-          },1500)
         }
       }
     )

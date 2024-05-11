@@ -1,0 +1,30 @@
+<main class="contenedor">
+    <h1>Mis Favoritos</h1>
+    <br><br>
+    <hr>
+    <div class="contenedor-productos">
+        @for(favorito of favoritos;track favorito.id){
+            <article class="producto">
+                <section>
+                    <div>
+                        <img src="../../../assets/logos/bicicleta.jpg" >
+                    </div>
+                    <div class="contenido">
+                        <div class="favoritos">
+                            <img src="">
+                            <p>{{favorito.precio}}€</p>
+                            <img src="../../../assets/logos/corazonlleno.png" (click)="borrarFavorito(favorito.id ?? 0)">
+                        </div>
+                        <p>{{favorito.titulo}}</p>
+                        <div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        }
+       
+    </div>
+    
+    <hr><br><br><br><br>
+</main>
+

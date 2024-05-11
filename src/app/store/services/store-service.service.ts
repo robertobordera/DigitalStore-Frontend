@@ -53,4 +53,12 @@ export class StoreServiceService {
     return this.#http.get<CarritoResponse2>(`${this.#carritoUrl}/mostrar_carrito/${id}`)
     .pipe(map((resp)=>resp.carritoProducts))
   }
+
+  eliminarProductoCarrito(idUsuario:number,idProducto:number):Observable<CarritoResponse>{
+    return this.#http.delete<CarritoResponse>(`${this.#carritoUrl}/usuario/${idUsuario}/borrar/${idProducto}`)
+  }
+
+  vaciarCarrito(idUsuario:number):Observable<CarritoResponse>{
+    return this.#http.delete<CarritoResponse>(`${this.#carritoUrl}/usuario/${idUsuario}/vaciar`)
+  }
 }

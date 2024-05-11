@@ -40,7 +40,7 @@
                         <div class="favoritos">
                             <img src="">
                             <p>{{mark.precio}}€</p>
-                            <img src="../../../assets/logos/corazonvacio.png">
+                            <img src="../../../assets/logos/corazonvacio.png" (click)="anyadirFavorito(mark.id ?? 0,usuario.id ?? 0)">
                         </div>
                         <p>{{mark.titulo}}</p>
                         <div>

@@ -14,5 +14,19 @@ export const usersRoutes:Routes = [
         loadComponent:()=>
             import('./settings/settings.component').then(
                 m => m.SettingsComponent),
+    },
+    {
+        path:'favorites/:id',
+        title:'favorites | Digital Store',
+        loadComponent:()=>
+            import('./favorites/favorites.component').then(
+                m => m.FavoritesComponent),
+    },
+    {
+        path:'myProducts',
+        title:'myProducts | Digital Store',
+        loadComponent:()=>
+            import('./my-products/my-products.component').then(
+                m => m.MyProductsComponent),
     }
 ]

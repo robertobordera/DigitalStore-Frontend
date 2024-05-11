@@ -1,7 +1,7 @@
 import { Users } from "../../auth/interfaces/users";
 
 export interface marketPlace{
-    id?:Number,
+    id?:number,
     titulo:string,
     precio:number,
     descripcion:string,
@@ -10,4 +10,23 @@ export interface marketPlace{
     usuario_id?:number,
     categoria_id?:number,
     usuario?:Users
+}
+
+export interface ventas{
+    id?:number,
+    titulo:string,
+    precio:number,
+    fecha:Date
+}
+
+export interface CommentInsert {
+    comentario: string;
+}
+
+export interface comentarios extends CommentInsert{
+    id?:number,
+    nombre:string,
+    comentario:string,
+    fecha:string
+    avatar?:string
 }

@@ -17,15 +17,34 @@
                         <p>{{carrito.marcaModelo}}</p>
                         <p class="precio">{{carrito.precio}}€</p>
                         <p class="entrega">¡{{carrito.entrega}}!</p>
+                       
                     </section>
                 </div>
                 <section class="cantidad-cesta">
-                    <p>1</p>
+                    <img src="../../../assets/logos/papelera.png" alt="imagen" (click)="borrarProducto(carrito.id)">
                 </section>
             </article>
-        }
 
+        }@empty {
+            @if(imagen){
+                <div class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loader-text">Loading...</div>
+                </div>
+            }
+            @else {
+                <img src="../../../assets/logos/carro2.png" class="carro2">
+            }
+
+        }
+        
     </div><br><br>
+    <div class="vaciar">
+        <button (click)="vaciarCarrito()">
+            <img src="../../../assets/logos/papelera2.png" >
+            Vaciar papelera
+        </button>
+    </div>
 
     <hr>
 
@@ -34,10 +53,10 @@
         
         <div class="total">
             <p>Total(Incluyendo impuestos)</p>
-            <p>748,90€</p>
+            <p>{{total}}€</p>
+            <hr>
         </div><br>
         
-        <hr>
         <br>
         <div class="boton">
             <button class="btn-shine" type="submit">

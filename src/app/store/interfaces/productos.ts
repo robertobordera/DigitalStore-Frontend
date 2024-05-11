@@ -29,4 +29,5 @@ export interface Carrito{
     imagen?:string,
     precio:number,
     entrega:string,
+    total?:number
 }

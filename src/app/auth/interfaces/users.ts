@@ -41,3 +41,8 @@ export interface UserPasswordEdit {
 export interface UserNombre {
     nombre?: string;
 }
+
+export interface anyadirFavorito{
+    productousu_id:number,
+    usuario_id:number
+}

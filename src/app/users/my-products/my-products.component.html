@@ -1,0 +1,59 @@
+<main class="contenedor">
+    <h1>Mis Productos</h1>
+    
+    <div class="venta-vendido">
+        <p [class.activo]="enVentaActivo" (click)="activarEnVenta()">En venta</p>
+        <p [class.activo]="vendidoActivo" (click)="activarVendido()">Vendido</p>
+    </div>
+    <hr>
+    @if(enVentaActivo){
+        <div class="contenedor-productos">
+            @for(market of marketPlace;track market.id){
+                <article class="producto">
+                    <section>
+                        <div>
+                            <img src="../../../assets/logos/bicicleta.jpg" >
+                        </div>
+                        <div class="contenido">
+                            <div class="favoritos">
+                                <img src="">
+                                <p>{{market.precio}}€</p>
+                                <img src="../../../assets/logos/corazonlleno.png">
+                            </div>
+                            <p>{{market.titulo}}</p>
+                            <div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            }
+        </div>
+    }
+    @else {
+        <div class="contenedor-productos">
+            @for(venta of ventas;track venta.id){
+                <article class="producto">
+                    <section>
+                        <div class="contenedor-imagen">
+                            <img src="../../../assets/logos/bicicleta.jpg" >
+                            <p class="etiqueta-superpuesta">Vendido</p>
+                        </div>
+                        <div class="contenido">
+                            <div class="favoritos">
+                                <img src="">
+                                <p>{{venta.precio}}€</p>
+                                <data>Venta: <br>{{venta.fecha}}</data>
+                            </div>
+                            <p>{{venta.titulo}}</p>
+                            <div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            }
+        </div>
+
+    }
+    <hr><br><br><br><br>
+</main>
+

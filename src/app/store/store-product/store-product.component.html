@@ -1,22 +1,5 @@
 <main>
-    @if(!id || id == 0){
-   <div class="contenedor-imagen">
-        <div class="imagen">
-            <img src="../../../assets/logos/imagenPC2.jpg">
-        </div>
-        <div class="texto">
-            <p>"Los portátiles, también conocidos como laptops o computadoras portátiles, tienen una historia fascinante que se remonta al siglo XX. Aunque los primeros intentos de computadoras portátiles se remontan a la década de 1970, fue la evolución de la tecnología de microprocesadores y la miniaturización de componentes electrónicos lo que realmente impulsó su desarrollo."</p>
-        </div>
-   </div>
-   <div class="contenedor-imagen2">
-       <div class="texto2">
-           <p>"En sus inicios, los procesadores eran dispositivos grandes y costosos, utilizados principalmente en aplicaciones militares y gubernamentales. Sin embargo, con el avance de la tecnología de semiconductores y la miniaturización de componentes electrónicos, los procesadores se volvieron más pequeños, eficientes y asequibles"</p>
-       </div>
-        <div class="imagen2">
-            <img src="../../../assets/logos/cpu.jpg">
-        </div>
-    </div>
-    }
+   
     @if(id && id != 0){
     <h1 class="tituloElement">{{$valorURL}}</h1>
     }
@@ -104,9 +87,27 @@
         </div>
     }
     @else {
-        <div class="video">
-        <video src="../../../assets/videos/home.mp4" width="1300" height="1000" autoplay muted ></video>
-      </div>
+
+        @if(!id || id == 0){
+            <div class="contenedor-imagen">
+                 <div class="imagen">
+                     <img src="../../../assets/logos/imagenPC2.jpg">
+                 </div>
+                 <div class="texto">
+                     <p>"Los portátiles, también conocidos como laptops o computadoras portátiles, tienen una historia fascinante que se remonta al siglo XX. Aunque los primeros intentos de computadoras portátiles se remontan a la década de 1970, fue la evolución de la tecnología de microprocesadores y la miniaturización de componentes electrónicos lo que realmente impulsó su desarrollo."</p>
+                 </div>
+            </div>
+            <div class="contenedor-imagen2">
+                <div class="texto2">
+                    <p>"En sus inicios, los procesadores eran dispositivos grandes y costosos, utilizados principalmente en aplicaciones militares y gubernamentales. Sin embargo, con el avance de la tecnología de semiconductores y la miniaturización de componentes electrónicos, los procesadores se volvieron más pequeños, eficientes y asequibles"</p>
+                </div>
+                 <div class="imagen2">
+                     <img src="../../../assets/logos/cpu.jpg">
+                 </div>
+             </div>
+             }
+
+       
       <div class="fecha">
           <p>Última actualizacion <u><time datetime="2024-12-25">25 de Diciembre</time></u></p>
       </div>
