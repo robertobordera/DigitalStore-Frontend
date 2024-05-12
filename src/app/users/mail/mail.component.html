@@ -1,0 +1,19 @@
+<main>
+    <h1>Mi Buzon</h1>
+    
+    <div class="contenedor">
+        @for(mail of mails;track mail.id){
+            <div class="email">
+                <div class="texto">
+                    <p>Has recibido una notificacion de tu producto {{mail.titulo}}.</p><br>
+                    <p>El usuario {{mail.nombre}} esta interesado en tu producto, pongase en contacto con el 
+                        atraves de su numero de telefono {{mail.telefono}} o traves de su correo electronico {{mail.correo}} <br><br>
+                    <data>{{mail.fecha}}</data></p>
+                </div>
+                <div class="imagen">
+                    <img src="../../../assets/logos/papelera2.png" >
+                </div>
+            </div>
+        }
+    </div>
+</main>

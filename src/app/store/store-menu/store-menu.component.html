@@ -30,6 +30,14 @@
                 <img src="../../../assets/logos/carrito.svg" alt="usuario" width="30px" height="30px" (click)="carrito()">
                 <p class="usuario" (click)="carrito()">Mi Cesta (0)</p>
             }
+            @if(!user?.id){
+                <img src="../../../assets/logos/correo.png" alt="usuario" width="30px" height="30px" (click)="login()">
+                <p class="usuario" (click)="login()">Mi Correo </p>
+            }
+            @else {
+                <img src="../../../assets/logos/correo.png" alt="usuario" width="30px" height="30px" (click)="carrito()">
+                <p class="usuario" (click)="mail()">Mi correo (0)</p>
+            }
         </div>
     </div>
     <hr>
@@ -57,7 +65,7 @@
             <li><a  [routerLink]="['/marketPlace/products']">MarketPlace</a></li>
             @if(mostrarDesplegable){
                 <ul class="sub-usuario">
-                    <li><a href="">Mi cuenta</a></li>
+                    <li><a [routerLink]="['/user/account']">Mi cuenta</a></li>
                     <li><a [routerLink]="['/user/myProducts']">Mis productos</a></li>
                     <li><a [routerLink]="['/user/favorites',user?.id]">Favoritos</a></li>
                     <li><a href="">Opiniones</a></li>

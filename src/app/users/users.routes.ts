@@ -28,5 +28,12 @@ export const usersRoutes:Routes = [
         loadComponent:()=>
             import('./my-products/my-products.component').then(
                 m => m.MyProductsComponent),
+    },
+    {
+        path:'mail',
+        title:'myMail | Digital Store',
+        loadComponent:()=>
+            import('./mail/mail.component').then(
+                m => m.MailComponent),
     }
 ]

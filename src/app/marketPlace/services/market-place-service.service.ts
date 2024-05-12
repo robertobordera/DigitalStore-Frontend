@@ -35,4 +35,8 @@ export class MarketPlaceServiceService {
     return this.#http.post<comentariosSingleResponse>(`${this.#productosUrl}/${id}/comentarios`,data)
     .pipe(map((resp)=>resp.comentario))
   }
+
+  ventas(idUsuario:number,idProducto:number):Observable<void>{
+    return this.#http.get<void>(`${this.#productosUrl}/${idUsuario}/productos/${idProducto}`)
+  }
 }

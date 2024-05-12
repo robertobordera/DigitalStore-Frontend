@@ -58,4 +58,8 @@ export class StoreMenuComponent implements OnInit {
   carrito(){
     this.#router.navigate(['/store/shopping-cart',this.user?.id]);
   }
+
+  mail(){
+    this.#router.navigate(['/user/mail']);
+  }
 }

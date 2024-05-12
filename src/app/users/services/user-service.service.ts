@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { UserDireccion, UserNombre, UserPasswordEdit, Users, anyadirFavorito, usuarioCorreo } from '../../auth/interfaces/users';
-import { UsuarioCorreoResponse, UsuarioDireccionResponse, UsuarioNombreResponse, UsuarioPasswordResponse, UsuarioResponse } from '../../auth/interfaces/responses';
+import { UserDireccion, UserNombre, UserPasswordEdit, Users, anyadirFavorito, mail, solicitud, usuarioCorreo } from '../../auth/interfaces/users';
+import { UsuarioCorreoResponse, UsuarioDireccionResponse, UsuarioNombreResponse, UsuarioPasswordResponse, UsuarioResponse, mailResponse } from '../../auth/interfaces/responses';
 import { CarritoResponse } from '../../store/interfaces/responses';
 import { marketPlace, ventas } from '../../marketPlace/interfaces/marketPlace';
 import { marketplaceResponse, ventasResponse } from '../../marketPlace/interfaces/responses';
@@ -17,6 +17,7 @@ export class UserService {
   #http = inject(HttpClient);
   #productosUrl = 'usuarios';
   #favoritosUrl = 'favoritos';
+  #solicitudUrl = 'solicitud';
 
   obtenerMisDatos():Observable<Users>{
     return this.#http.get<UsuarioResponse>(`${this.#productosUrl}/me`)
@@ -60,5 +61,14 @@ export class UserService {
   obtenerMisVentas():Observable<ventas[]>{
     return this.#http.get<ventasResponse>(`${this.#productosUrl}/misVentas`)
     .pipe(map((resp)=>resp.data))
+  }
+
+  mostrarMensajes(id:number):Observable<mail[]>{
+    return this.#http.get<mailResponse>(`${this.#solicitudUrl}/solicitudes/${id}`)
+    .pipe(map((resp)=>resp.solicitud));
+  }
+
+  enviarSolicitud(solicitud:solicitud):Observable<void>{
+    return this.#http.post<void>(`${this.#solicitudUrl}/enviar`,solicitud)
   }
 }

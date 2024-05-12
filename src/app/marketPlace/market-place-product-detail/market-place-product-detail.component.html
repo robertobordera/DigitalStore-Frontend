@@ -17,73 +17,79 @@
                 <p> 409 valoraciones</p>
             </div>
             <div class="favoritos-mensaje">
-                <img src="../../../assets/logos/corazonvacio.png" alt="uno">
+                <img src="../../../assets/logos/telegram.png" (click)="toggle2()">
                 <img src="../../../assets/logos/mapa2.png" alt="uno" (click)="toggle()"> 
             </div>
         </div>
 
-        <hr>
-
-        <div class="caja">
-            <h2>{{marketPlace.titulo}}</h2>
-
-            @for(comment of comentarios();track comment.id){
-                <div class="comentario-caja">
-                    <img src="../../../assets/logos/avatar.png" alt="logo">
-                    <div class="comentario">
-                        <div class="datos">
-                            <p>{{comment.nombre}}</p>
-                            <data>{{comment.fecha}}</data>
+        @if(toggled2){
+            <hr>
+    
+            <div class="caja">
+                <h2>{{marketPlace.titulo}}</h2>
+    
+                @for(comment of comentarios();track comment.id){
+                    <div class="comentario-caja">
+                        <img src="../../../assets/logos/avatar.png" alt="logo">
+                        <div class="comentario">
+                            <div class="datos">
+                                <p>{{comment.nombre}}</p>
+                                <data>{{comment.fecha}}</data>
+                            </div>
+                            <p>{{comment.comentario}}<br><br>
                         </div>
-                        <p>{{comment.comentario}}<br><br>
                     </div>
-                </div>
-            }
-        </div>
-        <hr>
-
-        <div class="enviar">
-            <form [formGroup]="formComment" (ngSubmit)="addComment()">
-                <input type="text" 
-                placeholder="Deja un comentario"
-                name="comentario"
-                id="comentario"
-                formControlName="comentario">
-                <button type="submit">
-                    <img src="../../../assets/logos/telegram.png">
-                </button>
-            </form>
-        </div>
-
-        <!-- <div class="imagen">
-            @if(toggled){
-                <img src="../../../assets/logos/bicicleta.jpg">
-            }
-            @if(!toggled){
-                <bm-map [coords]="coordinates">
-                    <bm-marker [coords]="coordinates" color="blue"></bm-marker>
-                </bm-map>
-            }
-        </div>
-
-        <div class="precio-direccion">
-            <p>{{marketPlace.precio}}€</p>
-            <data>Subido: {{marketPlace.fechaSubida}}</data>
-            <div class="direccion">
-                <img src="../../../assets/logos/ubicacion.png" alt="j">
-                <address>{{marketPlace.usuario?.calle}},{{marketPlace.usuario?.numeroCalle}}</address>
+                }
             </div>
-        </div>
+            <hr>
+    
+            <div class="enviar">
+                <form [formGroup]="formComment" (ngSubmit)="addComment()">
+                    <input type="text" 
+                    placeholder="Deja un comentario"
+                    name="comentario"
+                    id="comentario"
+                    formControlName="comentario">
+                    <button type="submit">
+                        <img src="../../../assets/logos/telegram.png">
+                    </button>
+                </form>
+            </div>
+        }
+        @else {
+            <div class="imagen">
+                @if(toggled){
+                    <img src="../../../assets/logos/bicicleta.jpg">
+                }
+                @if(!toggled){
+                    <bm-map [coords]="coordinates">
+                        <bm-marker [coords]="coordinates" color="blue"></bm-marker>
+                    </bm-map>
+                }
+            </div>
+    
+            <div class="precio-direccion">
+                <p>{{marketPlace.precio}}€</p>
+                <data>Subido: {{marketPlace.fechaSubida}}</data>
+                <div class="direccion">
+                    <img src="../../../assets/logos/ubicacion.png" alt="j">
+                    <address>{{marketPlace.usuario?.calle}},{{marketPlace.usuario?.numeroCalle}}</address>
+                </div>
+            </div>
+    
+            <div class="nombre-descripcion">
+                <p class="nombre">{{marketPlace.titulo}}o</p>
+                <p class="descripcion">{{marketPlace.descripcion}}</p>
+            </div>
 
-        <div class="nombre-descripcion">
-            <p class="nombre">{{marketPlace.titulo}}o</p>
-            <p class="descripcion">{{marketPlace.descripcion}}</p>
-        </div>
-
+    @if(!marketPlace.usuario?.me){
         <div class="boton">
-            <button class="btn-shine">
+            <button class="btn-shine" (click)="realizarVenta()">
                 <span>Contactar</span>
             </button>
-        </div> -->
+        </div>
+    }
+    }
+
     </section>
 </main>
