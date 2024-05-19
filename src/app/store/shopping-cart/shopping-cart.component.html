@@ -10,7 +10,7 @@
                 <div class="cesta-productos">
                     <section class="imagen-cesta">
                         <a href="elemento-detallePortatiles.html">
-                            <img src="../../../assets/logos/monitor.jpg" alt="imagen">
+                            <img [src]="'http://127.0.0.1:8000/' + carrito.imagen" alt="imagen">
                         </a>
                     </section>
                     <section class="descripciones-cesta">
@@ -33,6 +33,7 @@
                 </div>
             }
             @else {
+                
                 <img src="../../../assets/logos/carro2.png" class="carro2">
             }
 

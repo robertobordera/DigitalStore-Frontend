@@ -17,6 +17,7 @@ export class StoreDetailProductComponent implements OnInit{
   productos:Producto[] = [];
   valoraciones:ProductoValoracion[] = [];
   count = 0;
+  imagen:boolean = true;
 
   @Input() id!: number;
   #productosServices = inject(StoreServiceService)
@@ -30,7 +31,7 @@ export class StoreDetailProductComponent implements OnInit{
         error:(error) => console.error(error)
       })
 
-      this.#productosServices.obtenerProductos().subscribe({
+      this.#productosServices.obtenerProductos(1,5).subscribe({
         next:(productos)=>{
           this.productos = productos
         },
@@ -43,6 +44,16 @@ export class StoreDetailProductComponent implements OnInit{
         },
         error:(error) => console.error(error)
       })
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.ensenyarImagen();
+    }, 3000);
+  }
+  
+  ensenyarImagen() {
+    this.imagen = false;
   }
 
   elementoDetalle(id:number){

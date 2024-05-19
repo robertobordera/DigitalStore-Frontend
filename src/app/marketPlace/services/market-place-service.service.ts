@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { comentariosResponse, comentariosSingleResponse, marketplaceResponse, marketplaceSingleResponse } from '../interfaces/responses';
-import { CommentInsert, comentarios, marketPlace } from '../interfaces/marketPlace';
+import { Observable, map, pipe } from 'rxjs';
+import { comentariosResponse, comentariosSingleResponse, marketplaceResponse, marketplaceSingleResponse, subirResponse } from '../interfaces/responses';
+import { CommentInsert, comentarios, marketPlace, subirProducto } from '../interfaces/marketPlace';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,10 @@ export class MarketPlaceServiceService {
 
   ventas(idUsuario:number,idProducto:number):Observable<void>{
     return this.#http.get<void>(`${this.#productosUrl}/${idUsuario}/productos/${idProducto}`)
+  }
+
+  subirProducto(data:subirProducto):Observable<subirResponse>{
+    return this.#http.post<subirResponse>(`${this.#productosUrl}/subirProducto`,data)
+    .pipe(map((resp)=>resp))
   }
 }

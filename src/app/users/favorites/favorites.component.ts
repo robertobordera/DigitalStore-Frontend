@@ -15,10 +15,12 @@ export class FavoritesComponent implements OnInit{
   favoritos:marketPlace[] = []
   usuarioMe?:Users
   #userService = inject(UserService);
-  @Input() id!: number;
+  @Input() id?: number;
+  @Input() text?: string;
+  imagen:boolean = true;
 
   ngOnInit(): void {
-      this.#userService.ObtenerFavorito(this.id).subscribe({
+      this.#userService.ObtenerFavorito(this.id ?? 'me').subscribe({
         next:(producto)=>{
           console.log(producto)
           this.favoritos = producto
@@ -34,6 +36,16 @@ export class FavoritesComponent implements OnInit{
       });
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.ensenyarImagen();
+    }, 3000);
+  }
+  
+  ensenyarImagen() {
+    this.imagen = false;
+  }
+  
   borrarFavorito(idProductousu:number){
     if(this.usuarioMe?.id != undefined)
       {

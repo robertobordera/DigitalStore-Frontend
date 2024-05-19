@@ -6,11 +6,12 @@ import { marketPlace } from '../interfaces/marketPlace';
 import { AuthServiceService } from '../../auth/services/auth-service.service';
 import { Users, anyadirFavorito } from '../../auth/interfaces/users';
 import { UserService } from '../../users/services/user-service.service';
-
+import { FormsModule } from '@angular/forms';
+import { MarketFilterPipe } from '../pipes/market-filter.pipe';
 @Component({
   selector: 'app-market-place-product',
   standalone: true,
-  imports: [],
+  imports: [FormsModule,MarketFilterPipe],
   templateUrl: './market-place-product.component.html',
   styleUrl: './market-place-product.component.scss'
 })
@@ -21,6 +22,7 @@ export class MarketPlaceProductComponent implements OnInit{
   #userService = inject(UserService)
   marketPlace : marketPlace[] = [];
   usuario!:Users
+  search = '';
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -56,5 +58,9 @@ export class MarketPlaceProductComponent implements OnInit{
 
   elementoDetalle(id: Number | undefined) {
     this.#router.navigate(['/marketPlace/products', id]);
+  }
+
+  perfilUsuario(id:number | undefined){
+    this.#router.navigate(['/user/account', id]);
   }
 }

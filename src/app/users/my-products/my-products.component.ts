@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { UserService } from '../services/user-service.service';
 import { marketPlace, ventas } from '../../marketPlace/interfaces/marketPlace';
 
@@ -16,9 +16,13 @@ export class MyProductsComponent implements OnInit{
   #userService = inject(UserService);
   marketPlace:marketPlace[] = [];
   ventas:ventas[] = [];
+  imagen:boolean = true;
+  @Input() id?: number;
+  @Input() text?: string;
+
 
   ngOnInit(): void {
-      this.#userService.obtenerMisProductos().subscribe({
+      this.#userService.obtenerMisProductos(this.id ?? 'me').subscribe({
         next:(resp)=>{
           this.marketPlace = resp
         }
@@ -30,6 +34,17 @@ export class MyProductsComponent implements OnInit{
         }
       })
   }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.ensenyarImagen();
+    }, 3000);
+  }
+  
+  ensenyarImagen() {
+    this.imagen = false;
+  }
+
   activarEnVenta() {
     this.enVentaActivo = true;
     this.vendidoActivo = false;

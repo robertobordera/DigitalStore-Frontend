@@ -9,7 +9,7 @@
     }
     <div class="searchBox">
 
-        <input class="searchInput" type="text" name="" placeholder="Search something">
+        <input class="searchInput" type="text" name="search" id="search" [(ngModel)]="search" placeholder="Search something">
         <button class="searchButton" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
             <g clip-path="url(#clip0_2_17)">
@@ -37,10 +37,10 @@
     </div>
 
     <div class="flex-Articulos">   
-        @for(producto of productos;track producto.id){
+        @for(producto of productos |productFilter:search ;track producto.id){
         <article class="articulos">
                 <section>
-                    <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                    <img [src]="'http://127.0.0.1:8000/' + producto.imagen" alt="producto" (click)="elementoDetalle(producto.id)">
                     <br><br><br>
                     <div>
                     <p class="precio">{{producto.precio}}€</p><br><br>
@@ -51,10 +51,15 @@
                 </section>   
             </article>
         }@empty {
-            <div class="loader-container">
-                <div class="loader"></div>
-                <div class="loader-text">Loading...</div>
-            </div>
+            @if(imagen){
+                <div class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loader-text">Loading...</div>
+                </div>
+            }
+            @else {
+                <img src="../../../assets/logos/carro2.png" class="carro2">
+            }
 
         }
     </div>
@@ -65,10 +70,10 @@
             <h2 class="interes">Tambien podria interesarte</h2>
             <div class="flex-Articulos">   
                 
-                @for(producto of productos;track producto.id){
+                @for(producto of productosInteresarte;track producto.id){
                     <article class="articulos">
                             <section>
-                                <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                                <img [src]="'http://127.0.0.1:8000/' + producto.imagen" alt="producto" (click)="elementoDetalle(producto.id)">
                                 <br><br><br>
                                 <div>
                                 <p class="precio">{{producto.precio}}€</p><br><br>

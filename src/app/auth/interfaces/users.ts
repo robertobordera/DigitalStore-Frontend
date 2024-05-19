@@ -9,6 +9,7 @@ export interface Users {
    provincia:string
    telefono?:string
    me?:boolean
+   avatar:string
    latitud: number;
    longitud: number;
    ventas_count?:number

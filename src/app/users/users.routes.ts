@@ -9,11 +9,25 @@ export const usersRoutes:Routes = [
                 m => m.AccountComponent),
     },
     {
+        path:'account/:id',
+        title:'Account | Digital Store',
+        loadComponent:()=>
+            import('./account/account.component').then(
+                m => m.AccountComponent),
+    },
+    {
         path:'settings',
         title:'Settings | Digital Store',
         loadComponent:()=>
             import('./settings/settings.component').then(
                 m => m.SettingsComponent),
+    },
+    {
+        path:'favorites',
+        title:'favorites | Digital Store',
+        loadComponent:()=>
+            import('./favorites/favorites.component').then(
+                m => m.FavoritesComponent),
     },
     {
         path:'favorites/:id',

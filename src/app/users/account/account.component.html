@@ -1,3 +1,39 @@
-<app-my-products></app-my-products>
-<app-favorites></app-favorites>
-<app-settings></app-settings>
+<main class="main-background">
+    @if(id && user?.me == true || !id){
+        <h1>Mi cuenta</h1>
+    }
+    @else if(id){
+        <h1>{{user?.nombre}}</h1>    
+    }
+
+    <br><br>
+    <div class="mi-cuenta">
+        <img [src]="'http://127.0.0.1:8000/' + user?.avatar" class="imagenPrinc">
+        <div class="estadisticas">
+            <div class="ventas">
+                <img src="../../../assets/logos/ventas2.png"  alt="dos">
+                <p>0  ventas</p>
+            </div>
+            <div class="ventas">
+                <img src="../../../assets/logos/ventas2.png"  alt="dos">
+                <p>0  compras</p>
+            </div>
+            <div class="ventas">
+                <img src="../../../assets/logos/ventas2.png"  alt="dos">
+                <p>0  valoraciones</p>
+            </div>
+            @if(id && user?.me == true || !id){
+                <div class="boton">
+                    <button class="btn-shine" (click)="elementoDetalle()">
+                        <span>+ Subir producto</span>
+                    </button>
+                </div>
+            }
+        </div><br>
+    </div>
+    <app-my-products [id]="id" [text]="user?.nombre"></app-my-products>
+    <app-favorites [id]="id" [text]="user?.nombre"></app-favorites>
+    @if(id && user?.me == true || !id){
+        <app-settings></app-settings>
+    }
+</main>

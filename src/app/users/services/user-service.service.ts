@@ -23,6 +23,10 @@ export class UserService {
     return this.#http.get<UsuarioResponse>(`${this.#productosUrl}/me`)
     .pipe(map((resp)=>resp.usuario));
   }
+  obtenerDatosUsuario(id :number):Observable<Users>{
+    return this.#http.get<UsuarioResponse>(`${this.#productosUrl}/datos/${id}`)
+    .pipe(map((resp)=>resp.usuario));
+  }
 
   actualizarCorreo(datos:usuarioCorreo):Observable<UsuarioCorreoResponse>{
     return this.#http.put<UsuarioCorreoResponse>(`${this.#productosUrl}/actualizarCorreo`,datos)
@@ -44,8 +48,9 @@ export class UserService {
     return this.#http.post<CarritoResponse>(`${this.#favoritosUrl}/anyadir_favorito`,data)
   }
 
-  ObtenerFavorito(id:number):Observable<marketPlace[]>{
-    return this.#http.get<marketplaceResponse>(`${this.#favoritosUrl}/mostrar_favoritos/${id}`)
+  ObtenerFavorito(me:number | string):Observable<marketPlace[]>{
+    const meStr = String(me);
+    return this.#http.get<marketplaceResponse>(`${this.#favoritosUrl}/mostrar_favoritos/${meStr}`)
     .pipe(map((resp)=>resp.data))
   }
 
@@ -53,8 +58,9 @@ export class UserService {
     return this.#http.delete<CarritoResponse>(`${this.#favoritosUrl}/usuario/${idUsuario}/borrar/${idProductousu}`)
   }
 
-  obtenerMisProductos():Observable<marketPlace[]>{
-    return this.#http.get<marketplaceResponse>(`${this.#productosUrl}/misProductos`)
+  obtenerMisProductos(me:number | string):Observable<marketPlace[]>{
+    const meStr = String(me);
+    return this.#http.get<marketplaceResponse>(`${this.#productosUrl}/misProductos/${meStr}`)
     .pipe(map((resp)=>resp.data))
   }
 

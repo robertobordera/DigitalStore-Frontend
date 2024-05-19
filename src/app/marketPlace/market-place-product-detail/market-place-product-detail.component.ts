@@ -109,11 +109,11 @@ export class MarketPlaceProductDetailComponent implements OnInit {
 
       if (result.isConfirmed) {
         if(this.usuarioMe.id)
-        this.#marketService.ventas(this.usuarioMe.id,this.id).subscribe({
+        this.#marketService.ventas(this.marketPlace.usuario_id ?? 0,this.id).subscribe({
           next:() =>{
             let solicitud:solicitud = {
               usuario_enviador_id : this.usuarioMe.id ?? 0,
-              usuario_receptor_id : this.marketPlace.id ?? 0,
+              usuario_receptor_id : this.marketPlace.usuario_id ?? 0,
               productousu_id:this.id
             }
 

@@ -13,10 +13,15 @@ export class StoreServiceService {
   #productosUrl = 'productos';
   #carritoUrl = 'carrito';
 
-  obtenerProductos(id?:number): Observable<Producto[]> {
-    if(id){
+  obtenerProductos(categoria?:number,numero?:number): Observable<Producto[]> {
+    if(categoria && numero){
       return this.#http
-      .get<ProductosResponse>(`${this.#productosUrl}/categoria/${id}`)
+      .get<ProductosResponse>(`${this.#productosUrl}/limit/${numero}/categoria/${categoria}`)
+      .pipe(map((resp) => resp.datas));
+    }
+    else if(categoria){
+      return this.#http
+      .get<ProductosResponse>(`${this.#productosUrl}/categoria/${categoria}`)
       .pipe(map((resp) => resp.datas));
     }
     else{

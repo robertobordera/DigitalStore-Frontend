@@ -2,16 +2,11 @@
     <article class="detalleImagenCaracteristicas">
         <section class="imagenDetalle">
             <div class="imagenTop">
-                <img class="imagen1" src="../../../assets/logos/monitor.jpg" alt="imagen-detalle">
+                <img class="imagen1" [src]="'http://127.0.0.1:8000/' + producto.imagen" alt="imagen-detalle">
                 <!-- <img class="imagen2" src="./imagenes/portatiles/AcerAspire.jpg" alt="imagen-detalle">
                 <img class="imagen3" src="./imagenes/portatiles/AcerNitro.jpg" alt="imagen-detalle"> -->
             </div>
             <br><br>
-            <div class="numerosImagenes">
-                <p class="uno">1</p>
-                <p class="dos">2</p>
-                <p class="tres">3</p>
-            </div>
         </section>
         <section class="textoDetalle">
             <h2>{{producto.marcaModelo}}</h2>
@@ -34,7 +29,7 @@
                 @if(producto.id != 3){
                     <article class="articulos">
                         <section>
-                            <img src="../../../assets/logos/monitor.jpg" alt="producto" (click)="elementoDetalle(producto.id)">
+                            <img [src]="'http://127.0.0.1:8000/' + producto.imagen" alt="producto" (click)="elementoDetalle(producto.id)">
                             <br><br><br>
                             <div>
                             <p class="precio">{{producto.precio}}€</p><br><br>
@@ -44,12 +39,16 @@
                         </section>   
                     </article>
                 }
-            }@empty 
-            {
-            <div class="loader-container">
-                <div class="loader"></div>
-                <div class="loader-text">Loading...</div>
-            </div>
+            }@empty {
+                @if(imagen){
+                    <div class="loader-container">
+                        <div class="loader"></div>
+                        <div class="loader-text">Loading...</div>
+                    </div>
+                }
+                @else {
+                    <img src="../../../assets/logos/carro2.png" class="carro2">
+                }
             }
                 
         </div>
@@ -85,12 +84,18 @@
                 </div>
             </section>
             <br>
-        }@empty 
-        {
-        <div class="loader-container">
-            <div class="loader"></div>
-            <div class="loader-text">Loading...</div>
-        </div>
+        }@empty {
+            @if(imagen){
+                <div class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loader-text">Loading...</div>
+                </div>
+            }
+            @else {
+                <div class="posicion">
+                    <img src="../../../assets/logos/carro2.png" class="carro2">
+                </div>
+            }
         }
     </article>
 

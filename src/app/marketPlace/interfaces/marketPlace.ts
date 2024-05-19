@@ -16,7 +16,9 @@ export interface ventas{
     id?:number,
     titulo:string,
     precio:number,
-    fecha:Date
+    fecha:Date,
+    imagen:string,
+    avatar:string
 }
 
 export interface CommentInsert {
@@ -29,4 +31,10 @@ export interface comentarios extends CommentInsert{
     comentario:string,
     fecha:string
     avatar?:string
+}
+
+export interface subirProducto{
+    titulo:string,
+    descripcion:string,
+    precio:number,
 }

@@ -3,7 +3,7 @@
         
         <div class="usuario-informacion">
             <div class="detalles-usuario">
-                <img src="../../../assets/logos/avatar.png" alt="logo">
+                <img [src]="'http://127.0.0.1:8000/' + marketPlace.usuario?.avatar" alt="logo">
                 <div class="info">
                     <p>{{marketPlace.usuario!.nombre}}</p>
                     <img src="../../../assets/logos/3estrella.png">
@@ -30,7 +30,7 @@
     
                 @for(comment of comentarios();track comment.id){
                     <div class="comentario-caja">
-                        <img src="../../../assets/logos/avatar.png" alt="logo">
+                        <img [src]="'http://127.0.0.1:8000/' + marketPlace.usuario?.avatar" alt="logo">
                         <div class="comentario">
                             <div class="datos">
                                 <p>{{comment.nombre}}</p>
@@ -59,7 +59,7 @@
         @else {
             <div class="imagen">
                 @if(toggled){
-                    <img src="../../../assets/logos/bicicleta.jpg">
+                    <img  [src]="'http://127.0.0.1:8000/' + marketPlace.imagen">
                 }
                 @if(!toggled){
                     <bm-map [coords]="coordinates">
@@ -78,7 +78,7 @@
             </div>
     
             <div class="nombre-descripcion">
-                <p class="nombre">{{marketPlace.titulo}}o</p>
+                <p class="nombre">{{marketPlace.titulo}}</p>
                 <p class="descripcion">{{marketPlace.descripcion}}</p>
             </div>
 

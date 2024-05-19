@@ -8,10 +8,12 @@ import { AuthServiceService } from '../../auth/services/auth-service.service';
 import { UserService } from '../../users/services/user-service.service';
 import { Users } from '../../auth/interfaces/users';
 import Swal from 'sweetalert2';
+import { PostFilterPipe } from '../pipes/product-filter.pipe';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-store-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,PostFilterPipe,FormsModule],
   templateUrl: './store-product.component.html',
   styleUrl: './store-product.component.scss',
 })
@@ -19,11 +21,15 @@ export class StoreProductComponent implements OnInit {
   #location = inject(Location);
   #router = inject(Router);
   productos: Producto[] = [];
+  productosInteresarte:Producto[]=[];
   usuario!:Users
   #productosServices = inject(StoreServiceService);
   #userService = inject(UserService);
   id!: number;
   $valorURL: string = "";
+  imagen:boolean = true;
+  search = '';
+
 
   constructor(private route: ActivatedRoute) {}
 
@@ -40,6 +46,11 @@ export class StoreProductComponent implements OnInit {
           next: (productos) => {
             this.productos = productos;
             console.log(this.id)
+            this.#productosServices.obtenerProductos(this.id,4).subscribe({
+              next:(products) =>{
+                this.productosInteresarte = products
+              }
+            })
           },
           error: (error) => console.error(error),
         });
@@ -87,6 +98,16 @@ export class StoreProductComponent implements OnInit {
         console.log(this.usuario);
       },
     });
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.ensenyarImagen();
+    }, 3000);
+  }
+  
+  ensenyarImagen() {
+    this.imagen = false;
   }
 
   anyadirCarrito(producto_id:number,usuario_id:number){

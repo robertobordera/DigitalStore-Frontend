@@ -1,4 +1,4 @@
-import { comentarios, marketPlace, ventas } from "./marketPlace";
+import { comentarios, marketPlace, subirProducto, ventas } from "./marketPlace";
 
 export interface marketplaceResponse{
     data:marketPlace[]
@@ -18,4 +18,10 @@ export interface comentariosResponse{
 
 export interface comentariosSingleResponse{
     comentario:comentarios
+}
+
+export interface subirResponse{
+    success:boolean,
+    message:string,
+    data:subirProducto
 }

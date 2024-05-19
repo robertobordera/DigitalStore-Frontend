@@ -3,7 +3,7 @@
     
     <div class="searchBox">
 
-            <input class="searchInput" type="text" name="" placeholder="Search something">
+            <input class="searchInput" type="text" name="search" id="search" [(ngModel)]="search" placeholder="Search something">
             <button class="searchButton" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
                 <g clip-path="url(#clip0_2_17)">
@@ -30,15 +30,15 @@
             </button>
         </div>
     <div class="contenedor-productos">
-        @for(mark of marketPlace;track mark.id){
+        @for(mark of marketPlace | marketFilter:search;track mark.id){
             <article class="producto">
                 <section>
                     <div>
-                        <img src="../../../assets/logos/bicicleta.jpg" (click)="elementoDetalle(mark.id)">
+                        <img [src]="'http://127.0.0.1:8000/' + mark.imagen" (click)="elementoDetalle(mark.id)">
                     </div>
                     <div class="contenido">
                         <div class="favoritos">
-                            <img src="">
+                            <img [src]="'http://127.0.0.1:8000/' + mark.usuario?.avatar" (click)="perfilUsuario(mark.usuario_id)">
                             <p>{{mark.precio}}€</p>
                             <img src="../../../assets/logos/corazonvacio.png" (click)="anyadirFavorito(mark.id ?? 0,usuario.id ?? 0)">
                         </div>

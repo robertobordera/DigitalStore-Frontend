@@ -11,12 +11,19 @@ export const marketPlaceRoutes: Routes = [
       import('./market-place-product/market-place-product.component').then((m) => m.MarketPlaceProductComponent),
   },
   {
+    path: 'products/form',
+    loadComponent: () =>
+        import('./market-place-form/market-place-form.component').then(
+            (m) => m.MarketPlaceFormComponent
+        )
+  },
+  {
     path: 'products/:id',
     loadComponent: () =>
         import('./market-place-product-detail/market-place-product-detail.component').then(
             (m) => m.MarketPlaceProductDetailComponent
         )
-}
+  },
 //   {
 //     path: 'register',
 //     title: 'Register ',

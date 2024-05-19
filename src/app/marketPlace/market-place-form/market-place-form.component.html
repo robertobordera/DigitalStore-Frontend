@@ -1,0 +1,89 @@
+<main>
+
+    <div class="container">
+        <div class="heading">Subir Producto</div>
+        <form (ngSubmit)="subirProducto()" [formGroup]="formularioSubir" id="form-register" class="form" method="POST" role="form">
+            <div class="direccion">
+                <input
+                required=""
+                class="input"
+                type="text"
+                name="titulo"
+                id="titulo"
+                formControlName="titulo"
+                placeholder="Introduzca titulo"
+                />
+                <!-- <img src="../../../assets/logos/cerrar.png" [hidden]="titulo.valid || titulo.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="titulo.invalid || titulo.untouched"> -->
+                <!-- @if(titulo.errors?.['minlength']){
+                    <div class="invalid-feedback">
+                        The titulo has to be completed! Introduce:
+                        {{titulo.errors?.['minlength'].requiredLength - titulo.errors?.['minlength'].actualLength}}
+                        more characters!
+                    </div>
+                }  -->
+                
+            </div>
+            <div class="direccion">
+                <input
+                required=""
+                class="input"
+                type="text"
+                name="descripcion"
+                id="descripcion"
+                formControlName="descripcion"
+                placeholder="Descripcion"
+                />
+                <!-- <img src="../../../assets/logos/cerrar.png" [hidden]="descripcion.valid || descripcion.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="descripcion.invalid || descripcion.untouched">
+                @if(descripcion.errors?.['minlength']){
+                    <div class="invalid-feedback">
+                        The descripcion has to be completed! Introduce:
+                        {{descripcion.errors?.['minlength'].requiredLength - descripcion.errors?.['minlength'].actualLength}}
+                        more characters!
+                    </div>
+                }  -->
+        
+            </div>
+            <div class="direccion">
+                <input
+                required=""
+                class="input"
+                type="number"
+                name="precio"
+                id="precio"
+                formControlName="precio"
+                placeholder="Precio"
+                />
+                <!-- <img src="../../../assets/logos/cerrar.png" [hidden]="precio.valid || precio.untouched">
+                <img src="../../../assets/logos/true.png" [hidden]="precio.invalid || precio.untouched">
+            
+                @if(precio.errors?.['minlength']){
+                    <div class="invalid-feedback">
+                        ¡Introduzca:
+                        {{precio.errors?.['minlength'].requiredLength - precio.errors?.['minlength'].actualLength}}
+                        caracteres mas!
+                    </div>
+                }  -->
+            </div>
+            <select class="input" id="select" >
+                <option value=1>Moviles</option>
+                <option value=2>Portatiles</option>
+                <option value=3>Televisiones</option>
+                <option value=4>Tablets</option>
+                <option value=5>CPU</option>
+                <option value=6>Tarjetas Graficas</option>
+                <option value=7>Placas base</option>
+              </select>
+              <br><br><br>
+                
+            <div class="boton">
+                <button class="btn-shine" >
+                    <span>Contactar</span>
+                </button>
+            </div>
+           
+    
+        </form>
+    </div>
+</main>

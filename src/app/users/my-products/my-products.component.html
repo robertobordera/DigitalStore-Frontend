@@ -1,5 +1,10 @@
 <main class="contenedor">
-    <h1>Mis Productos</h1>
+    @if(text){
+        <h1>Los productos de {{text}}</h1>
+    }
+    @else {
+        <h1>Mis Productos</h1>
+    }
     
     <div class="venta-vendido">
         <p [class.activo]="enVentaActivo" (click)="activarEnVenta()">En venta</p>
@@ -12,11 +17,11 @@
                 <article class="producto">
                     <section>
                         <div>
-                            <img src="../../../assets/logos/bicicleta.jpg" >
+                            <img [src]="'http://127.0.0.1:8000/' + market.imagen" >
                         </div>
                         <div class="contenido">
                             <div class="favoritos">
-                                <img src="">
+                                <img [src]="'http://127.0.0.1:8000/' + market.usuario?.avatar">
                                 <p>{{market.precio}}€</p>
                                 <img src="../../../assets/logos/corazonlleno.png">
                             </div>
@@ -26,6 +31,18 @@
                         </div>
                     </section>
                 </article>
+            }@empty {
+                @if(imagen){
+                    <div class="loader-container">
+                        <div class="loader"></div>
+                        <div class="loader-text">Loading...</div>
+                    </div>
+                }
+                @else {
+                    <div class="posicion">
+                        <img src="../../../assets/logos/carro2.png" class="carro2">
+                    </div>
+                }
             }
         </div>
     }
@@ -35,12 +52,12 @@
                 <article class="producto">
                     <section>
                         <div class="contenedor-imagen">
-                            <img src="../../../assets/logos/bicicleta.jpg" >
+                            <img [src]="'http://127.0.0.1:8000/' + venta.imagen" >
                             <p class="etiqueta-superpuesta">Vendido</p>
                         </div>
                         <div class="contenido">
                             <div class="favoritos">
-                                <img src="">
+                                <img [src]="'http://127.0.0.1:8000/' + venta.avatar">
                                 <p>{{venta.precio}}€</p>
                                 <data>Venta: <br>{{venta.fecha}}</data>
                             </div>
@@ -50,10 +67,22 @@
                         </div>
                     </section>
                 </article>
+            }@empty {
+                @if(imagen){
+                    <div class="loader-container">
+                        <div class="loader"></div>
+                        <div class="loader-text">Loading...</div>
+                    </div>
+                }
+                @else {
+                    <div class="posicion">
+                        <img src="../../../assets/logos/carro2.png" class="carro2">
+                    </div>
+                }
             }
         </div>
 
     }
-    <hr><br><br><br><br>
+    <br><br><br><br>
 </main>
 
