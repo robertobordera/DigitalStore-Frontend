@@ -1,36 +1,35 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { UserService } from '../services/user-service.service';
-import { marketPlace, ventas } from '../../marketPlace/interfaces/marketPlace';
+import { leerResenya } from '../../auth/interfaces/users';
 
 @Component({
-  selector: 'app-my-products',
+  selector: 'app-opinions',
   standalone: true,
   imports: [],
-  templateUrl: './my-products.component.html',
-  styleUrl: './my-products.component.scss'
+  templateUrl: './opinions.component.html',
+  styleUrl: './opinions.component.scss'
 })
-export class MyProductsComponent implements OnInit{
+export class OpinionsComponent implements OnInit{
 
   enVentaActivo: boolean = true;
   vendidoActivo: boolean = false;
   #userService = inject(UserService);
-  marketPlace:marketPlace[] = [];
-  ventas:ventas[] = [];
   imagen:boolean = true;
+  recibidas:leerResenya[] = [];
+  realizadas:leerResenya[] = [];
   @Input() id?: number;
   @Input() text?: string;
 
-
   ngOnInit(): void {
-      this.#userService.obtenerMisProductos(this.id ?? 'me').subscribe({
-        next:(resp)=>{
-          this.marketPlace = resp
+      this.#userService.obtenerMisReseñasRecibidas(this.id ?? 'me').subscribe({
+        next:(data)=>{
+            this.recibidas = data
         }
       })
 
-      this.#userService.obtenerMisVentas().subscribe({
-        next:(resp)=>{
-          this.ventas = resp
+      this.#userService.obtenerMisReseñasRealizadas(this.id ?? 'me').subscribe({
+        next:(data)=>{
+            this.realizadas = data
         }
       })
   }
@@ -44,16 +43,14 @@ export class MyProductsComponent implements OnInit{
   ensenyarImagen() {
     this.imagen = false;
   }
-
+  
   activarEnVenta() {
     this.enVentaActivo = true;
     this.vendidoActivo = false;
-    console.log("hola")
   }
 
   activarVendido() {
     this.enVentaActivo = false;
     this.vendidoActivo = true;
-    console.log("hola2")
   }
 }

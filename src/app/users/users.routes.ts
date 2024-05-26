@@ -49,5 +49,18 @@ export const usersRoutes:Routes = [
         loadComponent:()=>
             import('./mail/mail.component').then(
                 m => m.MailComponent),
+    },
+    {
+        path:'resenya',
+        title:'myMail | Digital Store',
+        loadComponent:()=>
+            import('./resenya/resenya.component').then(
+                m => m.ResenyaComponent),
+    },{
+        path:'opinions',
+        title:'myMail | Digital Store',
+        loadComponent:()=>
+            import('./opinions/opinions.component').then(
+                m => m.OpinionsComponent),
     }
 ]

@@ -1,4 +1,4 @@
-import { comentarios, marketPlace, subirProducto, ventas } from "./marketPlace";
+import { comentarios, marketPlace, productoVendedor, subirProducto, ventas } from "./marketPlace";
 
 export interface marketplaceResponse{
     data:marketPlace[]
@@ -24,4 +24,13 @@ export interface subirResponse{
     success:boolean,
     message:string,
     data:subirProducto
+}
+
+export interface productoVendedorSingleResponse{
+    data:productoVendedor
+}
+
+export interface subirResenyaResponse{
+    success:boolean,
+    message:string,
 }

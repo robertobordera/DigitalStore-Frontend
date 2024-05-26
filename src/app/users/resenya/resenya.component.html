@@ -1,0 +1,33 @@
+<main>
+    <div class="container">
+        <h3>Deja una reseña al producto "{{productoVendedor?.titulo}}"</h3>
+        <br><br>
+        <div class="producto-usuario">
+            <div class="info">
+                <img [src]="'http://127.0.0.1:8000/' + productoVendedor?.imagen" class="prod">
+                <p>{{productoVendedor?.descripcion}}</p>
+            </div>
+        </div><br><br>
+        <div class="formul">
+            <form (ngSubmit)="subirResenya()" [formGroup]="formularioResenya">
+                <input type="text" 
+                       placeholder="Deja una reseña"
+                       name="reseña"
+                       id="reseña"
+                       formControlName="reseña"><br><br>
+                <input type="number" 
+                       placeholder="puntuacion"
+                       name="puntuacion"
+                       id="puntuacion"
+                       formControlName="puntuacion"
+                       size="10" maxlength="5"><br><br>
+                <div class="button-container">
+                    <button type="submit">
+                        <img src="../../../assets/logos/telegram.png">
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</main>

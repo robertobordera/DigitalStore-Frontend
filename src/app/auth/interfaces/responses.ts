@@ -1,4 +1,4 @@
-import { Users, mail } from "./users";
+import { Users, leerResenya, mail } from "./users";
 
 export interface TokenResponse{
     token:string;
@@ -38,4 +38,8 @@ export interface mailResponse{
 export interface mailSingleResponse{
     success:boolean,
     solicitud:mail
+}
+
+export interface leerResenyaResponse{
+    data:leerResenya[]
 }

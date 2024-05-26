@@ -1,0 +1,86 @@
+<main class="contenedor">
+    @if(text){
+        <h1>Las valoraciones de {{text}}</h1>
+    }
+    @else {
+        <h1>Mis Valoraciones</h1>
+    }
+    
+    <div class="venta-vendido">
+        <p [class.activo]="enVentaActivo" (click)="activarEnVenta()">Recibidas</p>
+        <p [class.activo]="vendidoActivo" (click)="activarVendido()">Enviadas</p>
+    </div>
+    <hr>
+    @if(enVentaActivo){
+        
+        @for(recib of recibidas;track recib.id){
+        <div class="principal">
+            <div class="container">
+                <h3>Reseña realizada al producto "{{recib.titulo}}"</h3>
+                <br>
+                <div class="pun-fecha">
+                    <img [src]="'http://127.0.0.1:8000/' + recib.imagen" class="prod">
+                    <p>{{recib.puntuacion}}</p>
+                    <p>{{recib.created_at}}</p>
+                </div>
+                <br>
+                <hr><br>
+                <div class="producto-usuario">
+                    <div class="info">
+                        <img [src]="'http://127.0.0.1:8000/' + recib.avatar" class="prod">
+                        <p>{{recib.resenya}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }@empty {
+            @if(imagen){
+                <div class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loader-text">Loading...</div>
+                </div>
+            }
+            @else {
+                <div class="posicion">
+                    <img src="../../../assets/logos/carro2.png" class="carro2">
+                </div>
+            }
+        }
+    }
+    @else {
+        @for(recib of realizadas;track recib.id){
+            <div class="principal">
+                <div class="container">
+                    <h3>Reseña realizada al producto "{{recib.titulo}}"</h3>
+                    <br>
+                    <div class="pun-fecha">
+                        <img [src]="'http://127.0.0.1:8000/' + recib.imagen" class="prod">
+                        <p>{{recib.puntuacion}}</p>
+                        <p>{{recib.created_at}}</p>
+                    </div>
+                    <br>
+                    <hr><br>
+                    <div class="producto-usuario">
+                        <div class="info">
+                            <img [src]="'http://127.0.0.1:8000/' + recib.avatar" class="prod">
+                            <p>{{recib.resenya}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }@empty {
+                @if(imagen){
+                    <div class="loader-container">
+                        <div class="loader"></div>
+                        <div class="loader-text">Loading...</div>
+                    </div>
+                }
+                @else {
+                    <div class="posicion">
+                        <img src="../../../assets/logos/carro2.png" class="carro2">
+                    </div>
+                }
+            }
+    }
+    <br><br><br><br>
+</main>

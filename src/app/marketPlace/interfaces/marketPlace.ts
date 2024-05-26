@@ -38,3 +38,22 @@ export interface subirProducto{
     descripcion:string,
     precio:number,
 }
+
+export interface productoVendedor{
+    titulo:string,
+    imagen:string,
+    descripcion:string,
+    nombre_usuario:string,
+    avatar_usuario:string
+}
+
+export interface subirResenya{
+    reseña:string,
+    puntuacion:number,
+    usuario_enviador_id:number,
+    usuario_receptor_id:number,
+    productousu_id:number
+}
+
+
+

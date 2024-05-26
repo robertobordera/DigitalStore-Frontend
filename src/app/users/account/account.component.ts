@@ -2,13 +2,14 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { MyProductsComponent } from '../my-products/my-products.component';
 import { FavoritesComponent } from '../favorites/favorites.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { OpinionsComponent } from '../opinions/opinions.component';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-service.service';
 import { Users } from '../../auth/interfaces/users';
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [MyProductsComponent,FavoritesComponent,SettingsComponent],
+  imports: [MyProductsComponent,FavoritesComponent,SettingsComponent,OpinionsComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })

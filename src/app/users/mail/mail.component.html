@@ -24,5 +24,19 @@
                 </div>
             </div>
         }
+
+        @for(mail of mails2;track mail.id){
+            <div class="email">
+                <div class="texto">
+                    <p>¡Enhorabuena! Has adquirido el producto {{mail.titulo}}.</p><br>
+                    <p>¿Porque no le dejas una valoracion? ¡Es gratis!
+                        <button (click)="valoracion(mail.productousu_id,mail.receptor_id)">Dejar Valoracion</button><br><br>
+                    <data>{{mail.fecha}}</data></p>
+                </div>
+                <div class="imagen">
+                    <img src="../../../assets/logos/papelera2.png" >
+                </div>
+            </div>
+        }
     </div>
 </main>

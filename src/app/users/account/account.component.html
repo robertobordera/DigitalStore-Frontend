@@ -33,6 +33,7 @@
     </div>
     <app-my-products [id]="id" [text]="user?.nombre"></app-my-products>
     <app-favorites [id]="id" [text]="user?.nombre"></app-favorites>
+    <app-opinions [id]="id" [text]="user?.nombre"></app-opinions>
     @if(id && user?.me == true || !id){
         <app-settings></app-settings>
     }

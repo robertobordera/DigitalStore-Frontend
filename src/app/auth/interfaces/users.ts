@@ -56,11 +56,24 @@ export interface mail{
     telefono:string,
     correo:string,
     titulo:string,
-    fecha:string
+    fecha:string,
+    enviador_id:number,
+    receptor_id:number,
+    productousu_id:number
 }
 
 export interface solicitud{
     usuario_enviador_id:number,
     usuario_receptor_id:number,
     productousu_id:number
+}
+
+export interface leerResenya{
+    id:number,
+    titulo:string,
+    avatar:string,
+    resenya:string,
+    puntuacion:number,
+    created_at:string,
+    imagen:string
 }

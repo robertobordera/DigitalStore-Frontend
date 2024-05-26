@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { UserDireccion, UserNombre, UserPasswordEdit, Users, anyadirFavorito, mail, solicitud, usuarioCorreo } from '../../auth/interfaces/users';
-import { UsuarioCorreoResponse, UsuarioDireccionResponse, UsuarioNombreResponse, UsuarioPasswordResponse, UsuarioResponse, mailResponse } from '../../auth/interfaces/responses';
+import { UserDireccion, UserNombre, UserPasswordEdit, Users, anyadirFavorito, leerResenya, mail, solicitud, usuarioCorreo } from '../../auth/interfaces/users';
+import { UsuarioCorreoResponse, UsuarioDireccionResponse, UsuarioNombreResponse, UsuarioPasswordResponse, UsuarioResponse, leerResenyaResponse, mailResponse } from '../../auth/interfaces/responses';
 import { CarritoResponse } from '../../store/interfaces/responses';
 import { marketPlace, ventas } from '../../marketPlace/interfaces/marketPlace';
 import { marketplaceResponse, ventasResponse } from '../../marketPlace/interfaces/responses';
@@ -18,6 +18,7 @@ export class UserService {
   #productosUrl = 'usuarios';
   #favoritosUrl = 'favoritos';
   #solicitudUrl = 'solicitud';
+  #reseñaUrl = 'reseña';
 
   obtenerMisDatos():Observable<Users>{
     return this.#http.get<UsuarioResponse>(`${this.#productosUrl}/me`)
@@ -74,7 +75,24 @@ export class UserService {
     .pipe(map((resp)=>resp.solicitud));
   }
 
+  mostrarMensajes2(id:number):Observable<mail[]>{
+    return this.#http.get<mailResponse>(`${this.#solicitudUrl}/solicitudes2/${id}`)
+    .pipe(map((resp)=>resp.solicitud));
+  }
+
   enviarSolicitud(solicitud:solicitud):Observable<void>{
     return this.#http.post<void>(`${this.#solicitudUrl}/enviar`,solicitud)
+  }
+
+  obtenerMisReseñasRealizadas(me:number | string):Observable<leerResenya[]>{
+    const meStr = String(me);
+    return this.#http.get<leerResenyaResponse>(`${this.#reseñaUrl}/realizadas/${meStr}`)
+    .pipe(map((resp)=>resp.data))
+  }
+
+  obtenerMisReseñasRecibidas(me:number | string):Observable<leerResenya[]>{
+    const meStr = String(me);
+    return this.#http.get<leerResenyaResponse>(`${this.#reseñaUrl}/recibidas/${meStr}`)
+    .pipe(map((resp)=>resp.data))
   }
 }

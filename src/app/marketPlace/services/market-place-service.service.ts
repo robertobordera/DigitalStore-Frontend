@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, pipe } from 'rxjs';
-import { comentariosResponse, comentariosSingleResponse, marketplaceResponse, marketplaceSingleResponse, subirResponse } from '../interfaces/responses';
-import { CommentInsert, comentarios, marketPlace, subirProducto } from '../interfaces/marketPlace';
+import { comentariosResponse, comentariosSingleResponse, marketplaceResponse, marketplaceSingleResponse, productoVendedorSingleResponse, subirResenyaResponse, subirResponse } from '../interfaces/responses';
+import { CommentInsert, comentarios, marketPlace, productoVendedor, subirProducto, subirResenya } from '../interfaces/marketPlace';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class MarketPlaceServiceService {
 
   #http = inject(HttpClient);
   #productosUrl = 'marketPlace';
+  #reseñaUrl = 'reseña';
 
   obtenerMarketProductos():Observable<marketPlace[]>{
     return this.#http.get<marketplaceResponse>(`${this.#productosUrl}/productos`)
@@ -39,9 +40,19 @@ export class MarketPlaceServiceService {
   ventas(idUsuario:number,idProducto:number):Observable<void>{
     return this.#http.get<void>(`${this.#productosUrl}/${idUsuario}/productos/${idProducto}`)
   }
+  obtenerDatosReseña(id:number):Observable<productoVendedor>{
+    return this.#http.get<productoVendedorSingleResponse>(`${this.#productosUrl}/datosProductoVendedor/${id}`)
+    .pipe(map((resp)=>resp.data))
+  }
 
   subirProducto(data:subirProducto):Observable<subirResponse>{
     return this.#http.post<subirResponse>(`${this.#productosUrl}/subirProducto`,data)
     .pipe(map((resp)=>resp))
   }
+
+  subirResenya(data:subirResenya):Observable<subirResenyaResponse>{
+    return this.#http.post<subirResenyaResponse>(`${this.#reseñaUrl}/enviar`,data)
+    .pipe(map((resp)=>resp))
+  }
+
 }
