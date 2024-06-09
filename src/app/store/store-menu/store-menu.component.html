@@ -28,7 +28,7 @@
             }
             @else {
                 <img src="../../../assets/logos/carrito.svg" alt="usuario" width="30px" height="30px" (click)="carrito()">
-                <p class="usuario" (click)="carrito()">Mi Cesta (0)</p>
+                <p class="usuario" (click)="carrito()">Mi Cesta</p>
             }
             @if(!user?.id){
                 <img src="../../../assets/logos/correo.png" alt="usuario" width="30px" height="30px" (click)="login()">
@@ -36,7 +36,7 @@
             }
             @else {
                 <img src="../../../assets/logos/correo.png" alt="usuario" width="30px" height="30px" (click)="carrito()">
-                <p class="usuario" (click)="mail()">Mi correo (0)</p>
+                <p class="usuario" (click)="mail()">Mi correo</p>
             }
         </div>
     </div>
@@ -61,7 +61,6 @@
                     <!-- Agrega más elementos de lista aquí según sea necesario -->
                 </ul>
             </li>
-            <li><a href="ofertas.html">Ofertas</a></li>
             <li><a  [routerLink]="['/marketPlace/products']">MarketPlace</a></li>
             @if(mostrarDesplegable){
                 <ul class="sub-usuario">
@@ -70,7 +69,6 @@
                     <li><a [routerLink]="['/user/favorites']">Favoritos</a></li>
                     <li><a [routerLink]="['/user/opinions']">Opiniones</a></li>
                     <li><a [routerLink]="['/user/settings']">Ajustes</a></li>
-                    <li><a href="">Historial</a></li>
                     <li><a href="" (click)="cerrarSesion()">Cerrar Sesion</a></li>
                 </ul>
             }
