@@ -87,7 +87,18 @@ export class MarketPlaceProductDetailComponent implements OnInit {
     this.#marketService.subirComentario(this.id,comentario).subscribe({
       next: (comment) => {
         console.log(comment)
-        this.comentarios().push(comment);
+        let currentComments = this.comentarios(); // Obtener el valor actual del WritableSignal
+
+        // Verificar si currentComments tiene algún valor, si no, inicializarlo como un array vacío
+        if (!currentComments) {
+          currentComments = [];
+        }
+  
+        // Agregar el nuevo comentario a la lista actual de comentarios
+        const newComments = [...currentComments, comment];
+  
+        // Actualizar el valor del WritableSignal
+        this.comentarios.set(newComments);
         this.comentario.reset();
       },
       error: (error) => console.error(error),

@@ -10,7 +10,7 @@
         <p [class.activo]="enVentaActivo" (click)="activarEnVenta()">En venta</p>
         <p [class.activo]="vendidoActivo" (click)="activarVendido()">Vendido</p>
     </div>
-    <hr>
+   
     @if(enVentaActivo){
         <div class="contenedor-productos">
             @for(market of marketPlace;track market.id){
@@ -83,6 +83,7 @@
         </div>
 
     }
+    <HR>
     <br><br><br><br>
 </main>
 

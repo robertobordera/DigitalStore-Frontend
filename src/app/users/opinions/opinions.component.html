@@ -10,7 +10,7 @@
         <p [class.activo]="enVentaActivo" (click)="activarEnVenta()">Recibidas</p>
         <p [class.activo]="vendidoActivo" (click)="activarVendido()">Enviadas</p>
     </div>
-    <hr>
+   
     @if(enVentaActivo){
         
         @for(recib of recibidas;track recib.id){

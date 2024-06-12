@@ -14,7 +14,7 @@
             <p class="descripcion">{{producto.descripcion}}</p>
             <small>Nº 9898</small>
             <div class="button">
-                <a href="carrito.html"><button>Añadir al carrito</button></a>
+                <button (click)="anyadirCarrito(producto.id, usuario.id ?? 0)">Añadir al carrito</button>
             </div>
         </section>
     </article>
@@ -33,7 +33,7 @@
                             <br><br><br>
                             <div>
                             <p class="precio">{{producto.precio}}€</p><br><br>
-                             <a href="carrito.html"><p class="animacion">Añadir al carrito</p></a>
+                            <p class="animacion" (click)="anyadirCarrito(producto.id, usuario.id ?? 0)">Añadir al carrito</p>
                             <p class="item item-1">{{producto.marcaModelo}}</p><br>
                             </div>
                         </section>   

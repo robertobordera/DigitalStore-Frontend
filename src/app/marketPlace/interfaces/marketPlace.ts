@@ -29,7 +29,7 @@ export interface comentarios extends CommentInsert{
     id?:number,
     nombre:string,
     comentario:string,
-    fecha:string
+    fecha:Date
     avatar?:string
 }
 
