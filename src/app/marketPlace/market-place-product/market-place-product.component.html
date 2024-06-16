@@ -34,11 +34,11 @@
             <article class="producto">
                 <section>
                     <div>
-                        <img [src]="'http://127.0.0.1:8000/' + mark.imagen" (click)="elementoDetalle(mark.id)">
+                        <img [src]="'http://127.0.0.1:8000/' + mark.imagen" loading="lazy" (click)="elementoDetalle(mark.id)">
                     </div>
                     <div class="contenido">
                         <div class="favoritos">
-                            <img [src]="'http://127.0.0.1:8000/' + mark.usuario?.avatar" (click)="perfilUsuario(mark.usuario_id)">
+                            <img [src]="'http://127.0.0.1:8000/' + mark.usuario?.avatar" loading="lazy" (click)="perfilUsuario(mark.usuario_id)">
                             <p>{{mark.precio}}€</p>
                             <img src="../../../assets/logos/corazonvacio.png" (click)="anyadirFavorito(mark.id ?? 0,usuario.id ?? 0)">
                         </div>

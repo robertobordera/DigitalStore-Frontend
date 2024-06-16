@@ -25,7 +25,7 @@
             <form (ngSubmit)="usuarioCorreo()" [formGroup]="formularioCorreo">
                 <label for="email">Antiguo correo:</label><br>
                 <div class="direccion-input">
-                    <input type="email" name="correo_antiguo" id="correo" required=""
+                    <input type="email" name="correo_antiguo" id="correo_antiguo" required=""
                     formControlName="correo_antiguo"><br><br>
                     <img src="../../../assets/logos/cerrar.png" [hidden]="correo_antiguo.valid || correo_antiguo.untouched">
                     <img src="../../../assets/logos/true.png" [hidden]="correo_antiguo.invalid || correo_antiguo.untouched">
@@ -96,7 +96,7 @@
                 <img src="../../../assets/logos/cerrar.png" [hidden]="nuevo_pass2.valid || nuevo_pass2.untouched">
                 <img src="../../../assets/logos/true.png" [hidden]="nuevo_pass2.invalid || nuevo_pass2.untouched">    
             </div>
-            @if(formularioPassword.hasError('coinciden') && formularioPassword.get('nuevo_pass2')?.touched)
+            @if(formularioPassword.hasError('coinciden'))
             {
                 <p class="invalid-feedback">Error: ¡Las dos contraseñas deben coincidir!</p>
             }

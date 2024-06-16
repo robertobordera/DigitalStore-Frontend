@@ -184,7 +184,7 @@ export class SettingsComponent implements OnInit {
       password: this.password,
       nuevo_pass2: this.nuevo_pass2,
     },
-    { validators: [this.ValidarPassAntiguo(), this.ValidarPassword()] }
+    { validators: this.ValidarPassword() }
   );
 
   usuarioPassword() {

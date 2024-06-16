@@ -8,6 +8,7 @@ import { Users, anyadirFavorito } from '../../auth/interfaces/users';
 import { UserService } from '../../users/services/user-service.service';
 import { FormsModule } from '@angular/forms';
 import { MarketFilterPipe } from '../pipes/market-filter.pipe';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-market-place-product',
   standalone: true,
@@ -51,6 +52,13 @@ export class MarketPlaceProductComponent implements OnInit{
     this.#userService.AnyadirFavorito(añadir).subscribe(
       (response) =>{
         if(response.success){
+          Swal.fire({
+            title: response.message,
+            icon: 'success',
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: '#3085d6',
+            allowOutsideClick: false,
+          });
         }
       }
     )
