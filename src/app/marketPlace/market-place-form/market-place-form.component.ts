@@ -18,6 +18,7 @@ export class MarketPlaceFormComponent {
   #fb = inject(NonNullableFormBuilder);
   #marketPlace = inject(MarketPlaceServiceService)
   #router = inject(Router);
+  selectedFile!: File
 
   titulo = this.#fb.control('',[
     Validators.required,
@@ -33,27 +34,40 @@ export class MarketPlaceFormComponent {
     Validators.required,
   ]);
 
+  imagen = this.#fb.control('',[
+    Validators.required,
+  ]);
+
 
 
   formularioSubir = this.#fb.group({
     titulo:this.titulo,
     descripcion:this.descripcion,
     precio:this.precio,
+    imagen:this.imagen
    
   })
 
   obtenerValorSelect(valorSeleccionado: string) {
     console.log('Valor seleccionado:', valorSeleccionado);
   }
-  subirProducto(){
-   
-    
-    const productoSubir : subirProducto = {
-      ...this.formularioSubir.getRawValue(),
-      precio: parseFloat(this.formularioSubir.get('precio')!.value),
 
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
     }
-    this.#marketPlace.subirProducto(productoSubir).subscribe({
+  }
+  subirProducto(){
+  
+    console.log(this.selectedFile);
+
+    const formData = new FormData();
+    formData.append('titulo', this.formularioSubir.get('titulo')!.value);
+    formData.append('descripcion', this.formularioSubir.get('descripcion')!.value);
+    formData.append('precio', this.formularioSubir.get('precio')!.value);
+    formData.append('imagen', this.selectedFile);
+
+    this.#marketPlace.subirProducto(formData).subscribe({
       next:(response)=>{
         this.formularioSubir.reset();
         Swal.fire({

@@ -32,7 +32,7 @@ export class MarketPlaceServiceService {
     .pipe(map((resp)=> resp.comentarios))
   }
 
-  subirComentario(id:number,data:CommentInsert):Observable<comentarios>{
+  subirComentario(id:number,data:comentarios):Observable<comentarios>{
     return this.#http.post<comentariosSingleResponse>(`${this.#productosUrl}/${id}/comentarios`,data)
     .pipe(map((resp)=>resp.comentario))
   }
@@ -45,7 +45,7 @@ export class MarketPlaceServiceService {
     .pipe(map((resp)=>resp.data))
   }
 
-  subirProducto(data:subirProducto):Observable<subirResponse>{
+  subirProducto(data:FormData):Observable<subirResponse>{
     return this.#http.post<subirResponse>(`${this.#productosUrl}/subirProducto`,data)
     .pipe(map((resp)=>resp))
   }

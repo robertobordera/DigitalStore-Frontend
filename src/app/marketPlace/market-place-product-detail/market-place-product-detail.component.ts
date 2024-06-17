@@ -31,6 +31,8 @@ export class MarketPlaceProductDetailComponent implements OnInit {
   coordinates: Coordinates = { latitude: 0, longitude: 0 };
   comentarios:WritableSignal<comentarios[]> =signal([]); 
   usuarioMe!:Users
+  currentDate?: string;
+  cont = 0;
   // comentarios:comentarios[] = []
   @Input() id!: number;
 
@@ -76,32 +78,52 @@ export class MarketPlaceProductDetailComponent implements OnInit {
         console.log(this.usuarioMe);
       },
     });
+
   }
 
-  addComment(){
-    const comentario:CommentInsert={
-       comentario:this.comentario.value,
-    }
-    console.log(comentario);
+  getCurrentFormattedDate(): string {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = this.padZero(date.getMonth() + 1);
+    const day = this.padZero(date.getDate());
+    const hours = this.padZero(date.getHours());
+    const minutes = this.padZero(date.getMinutes());
+    const seconds = this.padZero(date.getSeconds());
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
 
-    this.#marketService.subirComentario(this.id,comentario).subscribe({
+  padZero(value: number): string {
+    return value < 10 ? `0${value}` : value.toString();
+  }
+
+  addComment() {
+    const formattedDate = this.getCurrentFormattedDate();
+    const comentario: comentarios = {
+      comentario: this.comentario.value,
+      nombre: this.usuarioMe.nombre ?? "",
+      fecha: formattedDate,
+      avatar:this.usuarioMe.avatar
+    };
+
+    // Actualizar los comentarios localmente antes de enviar la solicitud
+    let currentComments = this.comentarios() || [];
+    const newComments = [...currentComments, comentario];
+    this.comentarios.set(newComments);
+
+    // Restablecer el formulario
+    this.comentario.reset();
+    this.cont++;
+
+    // Enviar el comentario al servidor
+    this.#marketService.subirComentario(this.id, comentario).subscribe({
       next: (comment) => {
-        console.log(comment)
-        let currentComments = this.comentarios(); // Obtener el valor actual del WritableSignal
-
-        // Verificar si currentComments tiene algún valor, si no, inicializarlo como un array vacío
-        if (!currentComments) {
-          currentComments = [];
-        }
-  
-        // Agregar el nuevo comentario a la lista actual de comentarios
-        const newComments = [...currentComments, comment];
-  
-        // Actualizar el valor del WritableSignal
-        this.comentarios.set(newComments);
-        this.comentario.reset();
+        console.log(comment);
       },
-      error: (error) => console.error(error),
+      error: (error) => {
+        console.error(error);
+        // Si hay un error, revertir el comentario añadido localmente
+        this.comentarios.set(currentComments);
+      }
     });
   }
 

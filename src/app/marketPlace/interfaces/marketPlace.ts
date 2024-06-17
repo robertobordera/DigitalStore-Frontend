@@ -23,13 +23,14 @@ export interface ventas{
 
 export interface CommentInsert {
     comentario: string;
+    
 }
 
 export interface comentarios extends CommentInsert{
     id?:number,
     nombre:string,
     comentario:string,
-    fecha:Date
+    fecha:string
     avatar?:string
 }
 
@@ -37,6 +38,7 @@ export interface subirProducto{
     titulo:string,
     descripcion:string,
     precio:number,
+    imagen:File
 }
 
 export interface productoVendedor{

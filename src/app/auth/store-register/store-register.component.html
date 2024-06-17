@@ -1,6 +1,6 @@
 <div class="container">
   <div class="heading">Registro</div>
-  <form (ngSubmit)="usuarioRegistro()" [formGroup]="formularioRegistro" id="form-register" class="form" method="POST" role="form">
+  <form (ngSubmit)="usuarioRegistro()" [formGroup]="formularioRegistro" id="form-register"  enctype="multipart/form-data" class="form" method="POST" role="form">
     <div class="direccion">
       <input
       required=""
@@ -150,10 +150,11 @@
       placeholder="Seleccione un avatar"
     /> -->
     <br /><br />
-    <span class="forgot-password"><a href="#">¿Olvido su contraseña?</a></span>
-    @if(formularioRegistro.valid){
+    <input type="file" formControlName="imagen" name="imagen" (change)="onFileChange($event)" required>
+    <br><br>
+   
       <input class="login-button" type="submit" value="Crear Cuenta">
-    }
+    
     <input
       class="login-button"
       type="button"

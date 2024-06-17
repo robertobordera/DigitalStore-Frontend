@@ -30,7 +30,7 @@ export class SettingsComponent implements OnInit {
   #userService = inject(UserService);
   #fb = inject(NonNullableFormBuilder);
   usuarioMe?: Users;
-
+  selectedFile!: File
   toggled: boolean = true;
 
   toggle() {
@@ -46,42 +46,60 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+    }
+  }
+
   nombre = this.#fb.control('',[
     Validators.required
   ])
 
+  avatar = this.#fb.control('',[
+    
+  ])
+
   formularioNombre = this.#fb.group(
     {
-      nombre:this.nombre 
+      nombre:this.nombre,
+      avatar:this.avatar
     }
   )
 
   usuarioNombre(){
-    const usuarioNombre: UserNombre = {
-      ...this.formularioNombre.getRawValue(),
-    };
+    console.log(this.nombre)
+    const formData = new FormData();
+    formData.append('nombre', this.formularioNombre.get('nombre')!.value);
+    formData.append('avatar', this.selectedFile);
 
-    this.#userService.actualizarNombre(usuarioNombre).subscribe(
-      (response) => {
-        if (response.success) {
-          this.formularioNombre.reset();
-          Swal.fire({
-            title: response.message,
-            icon: 'success',
-            confirmButtonText: 'Entendido',
-            confirmButtonColor: '#3085d6',
-            allowOutsideClick: false,
-          });
-
-          setTimeout(function(){
-            window.location.reload();
-          },1500)
-        }
-      },
-      (error) => {
-        // Manejo del error aquí
-        console.error('Error en inicio de sesión:', error);
+    this.#userService.actualizarNombre(formData).subscribe({
+      next: (response) => {
+        // Resetear el formulario
         this.formularioNombre.reset();
+    
+        // Mostrar mensaje de éxito
+        Swal.fire({
+          title: response.message,
+          icon: 'success',
+          confirmButtonText: 'Entendido',
+          confirmButtonColor: '#3085d6',
+          allowOutsideClick: false,
+        });
+    
+        // Recargar la página después de 1.5 segundos
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      },
+      error: (error) => {
+        // Manejar errores de la solicitud
+        console.error('Error al actualizar el nombre:', error);
+    
+        // Resetear el formulario
+        this.formularioNombre.reset();
+    
+        // Mostrar mensaje de error
         Swal.fire({
           title: 'Error',
           text: 'No se ha podido actualizar el nombre',
@@ -89,7 +107,8 @@ export class SettingsComponent implements OnInit {
           confirmButtonText: 'Entendido',
         });
       }
-    );
+    });
+    
   }
 
   correo_antiguo = this.#fb.control('', [

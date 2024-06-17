@@ -44,7 +44,7 @@ export class AuthServiceService {
     }))
   }
 
-  register(user: Users): Observable<void> {
+  register(user: FormData): Observable<void> {
     return this.#http.post<void>('auth/registro', user);
   }
   

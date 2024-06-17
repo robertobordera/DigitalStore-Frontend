@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="heading">Subir Producto</div>
-        <form (ngSubmit)="subirProducto()" [formGroup]="formularioSubir" id="form-register" class="form" method="POST" role="form">
+        <form (ngSubmit)="subirProducto()" [formGroup]="formularioSubir" id="form-register" enctype="multipart/form-data" class="form" method="POST" role="form">
             <div class="direccion">
                 <input
                 required=""
@@ -75,11 +75,13 @@
                 <option value=6>Tarjetas Graficas</option>
                 <option value=7>Placas base</option>
               </select>
+            <br><br>
+            <input type="file" formControlName="imagen" name="imagen" (change)="onFileChange($event)" required>
               <br><br><br>
                 
             <div class="boton">
                 <button class="btn-shine" >
-                    <span>Contactar</span>
+                    <span>Subir Producto</span>
                 </button>
             </div>
            

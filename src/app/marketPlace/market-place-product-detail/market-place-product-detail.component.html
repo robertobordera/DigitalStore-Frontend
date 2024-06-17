@@ -30,12 +30,13 @@
     
                 @for(comment of comentarios();track comment.id){
                     <div class="comentario-caja">
-                        <img [src]="'http://127.0.0.1:8000/' + marketPlace.usuario?.avatar" alt="logo">
+                        <img [src]="'http://127.0.0.1:8000/' + comment.avatar" alt="logo">
                         <div class="comentario">
                             <div class="datos">
-                                <p>{{comment.nombre}}</p>
+                                <p><strong>{{comment.nombre}}</strong></p>
                                 <data>{{comment.fecha}}</data>
                             </div>
+                            <br>
                             <p>{{comment.comentario}}<br><br>
                         </div>
                     </div>
@@ -50,9 +51,10 @@
                     name="comentario"
                     id="comentario"
                     formControlName="comentario">
-                    <button type="submit">
-                        <img src="../../../assets/logos/telegram.png">
-                    </button>
+                    <button type="submit" class="image-button">
+                        <img src="../../../assets/logos/telegram.png" alt="Telegram">
+                      </button>
+                      
                 </form>
             </div>
         }

@@ -7,9 +7,11 @@
                 @if(toggled){
                     <p>{{usuarioMe?.nombre}}</p>
                 }
-                @else {
-                    <form (ngSubmit)="usuarioNombre()" [formGroup]="formularioNombre">
-                        <input type="text" maxlength="20" size="20" formControlName="nombre"><br>
+                <!-- @else {
+                    <form (ngSubmit)="usuarioNombre()" [formGroup]="formularioNombre" enctype="multipart/form-data" >
+                        <input type="text" maxlength="20" size="20" formControlName="nombre"
+                        name="nombre" id="nombre"><br>
+                        <input type="file" formControlName="avatar" name="avatar" (change)="onFileChange($event)">
                         <div class="boton">
                             <button class="btn-shine" type="submit">
                                 <span>Cambiar usuario</span>
@@ -17,8 +19,7 @@
                         </div>
                     </form>
                 }
-                <img src="../../../assets/logos/lapiz.png" (click)="toggle()">
-                <img src="../../../assets/logos/galeria.png">
+                <img src="../../../assets/logos/lapiz.png" (click)="toggle()"> -->
             </div>
         </div>
         <div class="correo">

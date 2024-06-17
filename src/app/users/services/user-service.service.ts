@@ -41,8 +41,8 @@ export class UserService {
     return this.#http.put<UsuarioDireccionResponse>(`${this.#productosUrl}/actualizarDireccion`,datos)
   }
 
-  actualizarNombre(datos:UserNombre):Observable<UsuarioNombreResponse>{
-    return this.#http.put<UsuarioNombreResponse>(`${this.#productosUrl}/actualizarNombre`,datos)
+  actualizarNombre(datos:FormData):Observable<UsuarioDireccionResponse>{
+    return this.#http.put<UsuarioDireccionResponse>(`${this.#productosUrl}/actualizarNombre`,datos)
   }
 
   AnyadirFavorito(data:anyadirFavorito):Observable<CarritoResponse>{
